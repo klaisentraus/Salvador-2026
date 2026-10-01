@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -7,7 +7,7 @@
 <title>Salvador 10 a 16 de outubro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600;700&family=Pixelify+Sans:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600;700&family=Pixelify+Sans:wght@700&display=swap">
 <style>
 /* Layout: cabeçalho fixo, faixa de dias, linha do tempo vertical com rolagem própria, barra de ações embaixo. */
 :root {
@@ -62,7 +62,7 @@ header.top { position: relative; overflow: hidden; isolation: isolate; backgroun
 .days::-webkit-scrollbar { display: none; }
 .daychip { flex: 1 1 0; min-width: 0; border: 1.5px solid var(--line); background: var(--surface); border-radius: 12px; padding: 5px 2px 6px; text-align: center; transition: border-color .15s, background .15s, opacity .15s; }
 .daychip .wd { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
-.daychip .dn { font-family: var(--f-pixel); font-weight: 700; font-size: 20px; line-height: 1; }
+.daychip .dn { font-family: var(--f-display); font-weight: 700; font-size: 20px; line-height: 1; font-variant-numeric: lining-nums tabular-nums; }
 .daychip[aria-current="true"] { background: var(--ocean); border-color: var(--ocean); color: var(--on-ocean); }
 .daychip[aria-current="true"] .wd { color: var(--on-ocean); opacity: .8; }
 .daychip.drop-ok { border-color: var(--ok); background: var(--okfill); color: var(--ink); }
@@ -71,7 +71,7 @@ header.top { position: relative; overflow: hidden; isolation: isolate; backgroun
 
 main { position: relative; min-height: 0; overflow: hidden; display: flex; flex-direction: column; }
 .dayinfo { padding: 8px 16px; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line); background: var(--bg); }
-.dayinfo strong { color: var(--ink); font-family: var(--f-pixel); font-size: 17px; font-weight: 700; }
+.dayinfo strong { color: var(--ink); font-family: var(--f-display); font-size: 17px; font-weight: 700; font-variant-numeric: lining-nums; }
 .dayinfo .note { color: var(--accent); font-weight: 600; }
 .dayinfo .suninfo { color: var(--sun); font-weight: 700; }
 .scroller { flex: 1; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; position: relative; }
@@ -120,7 +120,7 @@ main { position: relative; min-height: 0; overflow: hidden; display: flex; flex-
 .weekscroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .week { display: grid; grid-template-columns: 26px repeat(7, minmax(88px, 1fr)); gap: 0 4px; padding: 8px 12px 12px 6px; min-width: 670px; }
 .week .wh { text-align: center; font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; padding-bottom: 4px; }
-.week .wh b { display: block; font-family: var(--f-pixel); font-size: 18px; color: var(--ink); text-transform: none; }
+.week .wh b { display: block; font-family: var(--f-display); font-weight: 700; font-variant-numeric: lining-nums; font-size: 18px; color: var(--ink); text-transform: none; }
 .week .wcol { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; padding: 0; }
 .week .wlab { position: relative; }
 .week .wlab span { position: absolute; right: 2px; font-size: 10px; color: var(--muted); transform: translateY(-6px); }
@@ -663,7 +663,7 @@ const ACTS = [
     links: [] },
   { id: "sexo", cat: "livre", dur: 60, min: 15, max: 240, win: [W(ALL, "06:00", "24:00")], editable: true,
     name: { pt: "Sexo", es: "Sexo" },
-    desc: { pt: "Bloco livre para vocês dois.", es: "Bloque libre para ustedes dos." },
+    desc: { pt: "👀", es: "👀" },
     links: [] },
   { id: "livre", cat: "livre", dur: 120, min: 30, max: 600, win: [W(ALL, "06:00", "24:00")], editable: true,
     name: { pt: "Tempo livre", es: "Tiempo libre" },
@@ -789,7 +789,7 @@ X("baleias", "Baía de Todos os Santos", "Bahía de Todos los Santos", "Barco pa
 X("helena", "", "", "Tempo com a Helena", "Tiempo con Helena");
 X("livre", "", "", "Descanso, hotel ou improviso", "Descanso, hotel o improvisar");
 X("outro", "", "", "Bloco com nome livre", "Bloque con nombre libre");
-X("sexo", "", "", "Bloco livre para vocês dois", "Bloque libre para ustedes dos");
+X("sexo", "", "", "👀", "👀");
 ACTS.forEach((a) => Object.assign(a, EXTRA[a.id] || { brief: null, area: null, p: null, tags: [] }));
 
 </script>
@@ -1448,7 +1448,7 @@ function openMenu() {
       ta.focus();
     });
     item(L().howto, "", () => { out.textContent = ""; const ul = el("ul", { class: "help" }); L().help.forEach((x) => ul.append(el("li", null, x))); out.append(ul); });
-    const th = store.get(LS_THEME) || "auto";
+    const th = store.get(LS_THEME) || "light";
     item(`${L().theme}: ${th === "dark" ? L().themeDark : th === "light" ? L().themeLight : L().themeAuto}`, "", () => { const nx = th === "auto" ? "light" : th === "light" ? "dark" : "auto"; store.set(LS_THEME, nx); applyTheme(); openMenu(); });
     let armed = false;
     const rb = el("button", { class: "danger", onclick: () => {
@@ -1531,7 +1531,7 @@ function toast(msg, bad, withUndo) {
   clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("on"), bad ? 5200 : 3200);
 }
 function scrollToMin(m) { const sc = $("scroller"); sc.scrollTop = Math.max(0, (m - DMIN) * PX() - 80); }
-function applyTheme() { const th = store.get(LS_THEME) || "auto"; if (th === "auto") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme", th); if (window.__scene) window.__scene.refresh(); }
+function applyTheme() { const th = store.get(LS_THEME) || "light"; if (th === "auto") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme", th); if (window.__scene) window.__scene.refresh(); }
 
 // ===== Cena 8-bit no cabeçalho: céu, mar, barco, gaivotas, coqueiro e farol =====
 // Desenhada em baixa resolução (1 pixel da arte = 3 px de tela) e animada a 10 quadros por segundo.
