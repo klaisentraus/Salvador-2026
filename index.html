@@ -258,6 +258,10 @@ const W = (days, from, to) => ({ days, from: h(from), to: h(to) });
 const F = (days, at) => ({ days, at: h(at) });
 const gm = (q) => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
 const gi = (q) => "https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(q);
+// Hospedagem informada pelo Rafael em 07/10/2026
+const LODGING = "Av. Sete de Setembro, 3633 - Barra, Salvador - BA, 40140-110";
+const AIRPORT = "Aeroporto Internacional de Salvador";
+const route = (from, to) => "https://www.google.com/maps/dir/?api=1&origin=" + encodeURIComponent(from) + "&destination=" + encodeURIComponent(to);
 
 const CATS = {
   mar: { pt: "Mar e praia", es: "Mar y playa" },
@@ -274,14 +278,14 @@ const ACTS = [
   // ---------- Viagem ----------
   { id: "chegada", cat: "base", pinned: true, dur: 125, min: 95, max: 215, fixed: [F([SAB], "15:25")],
     name: { pt: "Chegada: avião, malas, Uber e check-in", es: "Llegada: avión, maletas, Uber y check-in" },
-    desc: { pt: "Pouso às 15h25. Sair do avião e pegar as malas: estimativa de 45 min (mais, se o voo for internacional e tiver imigração). Uber de 45 a 60 min até a Barra e check-in: livres por volta das 17h30. Se o voo atrasar, estique este bloco.", es: "Aterrizaje a las 15:25. Salir del avión y recoger las maletas: unos 45 min estimados (más, si el vuelo es internacional y hay migración). Uber de 45 a 60 min hasta Barra y check-in: libres hacia las 17:30. Si el vuelo se retrasa, alarga este bloque." },
+    desc: { pt: "Pouso às 15h25. Sair do avião e pegar as malas: estimativa de 45 min (mais, se o voo for internacional e tiver imigração). Uber de 45 a 60 min até a hospedagem, na Av. Sete de Setembro 3633, no Porto da Barra, e check-in: livres por volta das 17h30. Se o voo atrasar, estique este bloco.", es: "Aterrizaje a las 15:25. Salir del avión y recoger las maletas: unos 45 min estimados (más, si el vuelo es internacional y hay migración). Uber de 45 a 60 min hasta el alojamiento, en la Av. Sete de Setembro 3633, en Porto da Barra, y check-in: libres hacia las 17:30. Si el vuelo se retrasa, alarga este bloque." },
     hours: { pt: "Início fixo às 15h25. Estimativa: malas 15h25 a 16h10; Uber 16h15 a 17h15; check-in até 17h30.", es: "Inicio fijo a las 15:25. Estimación: maletas 15:25 a 16:10; Uber 16:15 a 17:15; check-in hasta 17:30." },
     cost: { pt: "Uber cerca de R$40 a 70.", es: "Uber unos R$40 a 70." },
-    links: [] },
+    links: [["rotaHosp", route(AIRPORT, LODGING)]] },
   { id: "aeroporto", cat: "base", locked: true, dur: 70, min: 70, max: 70, win: [W([SEX], "21:30", "22:40")],
     name: { pt: "Saída para o aeroporto", es: "Salida al aeropuerto" },
-    desc: { pt: "Uber de 45 a 60 min. Estar no aeroporto às 22h40, três horas antes do voo internacional de sábado às 01h40. Combinar com o hotel um late check-out até 21h.", es: "Uber de 45 a 60 min. Estar en el aeropuerto a las 22:40, tres horas antes del vuelo internacional del sábado a la 01:40. Acordar con el hotel un late check-out hasta las 21:00." },
-    links: [] },
+    desc: { pt: "Uber de 45 a 60 min. Estar no aeroporto às 22h40, três horas antes do voo internacional de sábado às 01h40. Combinar com a hospedagem um late check-out até 21h ou deixar as malas guardadas.", es: "Uber de 45 a 60 min. Estar en el aeropuerto a las 22:40, tres horas antes del vuelo internacional del sábado a la 01:40. Acordar con el alojamiento un late check-out hasta las 21:00 o dejar las maletas guardadas." },
+    links: [["rotaAero", route(LODGING, AIRPORT)]] },
 
   // ---------- Mar e praia ----------
   { id: "farol", cat: "mar", dur: 90, min: 60, max: 180, win: [W(ALL, "09:00", "18:30")],
@@ -527,6 +531,117 @@ const ACTS = [
     cost: { pt: "Ondina: R$59,90 por pessoa de seg a qui. Salvador Shopping: R$59,90 de dom a qua e R$69,90 de qui a sáb e feriados. Preços de 2025: podem ter subido.", es: "Ondina: R$59,90 por persona de lun a jue. Salvador Shopping: R$59,90 de dom a mié y R$69,90 de jue a sáb y festivos. Precios de 2025: pueden haber subido." },
     links: [["info", "https://cantinavolpi.com.br/cantinavolpi/cantinavolpi-ondina"], ["instagram", "https://www.instagram.com/cantinavolpioficial/"], ["preços", "https://www.correio24horas.com.br/salvador/coma-a-vontade-conheca-7-rodizios-por-ate-r-65-em-salvador-0925"]],
     map: "Cantina Volpi Rua Professor Sabino Silva 822 Ondina Salvador", photo: "Cantina Volpi rodízio pizza Salvador" },
+  // Fontes: salvadordabahia.com, 02/06/2025 (horário e telefone); TripAdvisor (nota 4,9, avaliações de set e out/2026); lista da Restaurant Week 2026
+  { id: "buddha", cat: "comida", dur: 75, min: 45, max: 150, win: [W([SEG, TER, QUA, QUI], "12:00", "16:00"), W([SEG, TER, QUA, QUI], "18:00", "23:00"), W([SEX, SAB], "12:00", "24:00"), W([DOM], "12:00", "22:00")],
+    name: { pt: "Buddha Bistrô Asiático", es: "Buddha Bistrô Asiático" },
+    desc: { pt: "Cozinha asiática variada na Pituba, perto da Costa Azul: pad thai, guioza e dan dan noodles. Nota 4,9 no TripAdvisor. Reservar: (71) 98362-3653. Participa da Restaurant Week.", es: "Cocina asiática variada en Pituba, cerca de Costa Azul: pad thai, gyozas y dan dan noodles. Nota 4,9 en TripAdvisor. Reservar: +55 71 98362-3653. Participa en la Restaurant Week." },
+    hours: { pt: "Seg a qui 12h às 16h e 18h às 23h; sex e sáb 12h à meia-noite; dom 12h às 22h (jun/2025).", es: "Lun a jue 12:00 a 16:00 y 18:00 a 23:00; vie y sáb 12:00 a 24:00; dom 12:00 a 22:00 (jun/2025)." },
+    cost: { pt: "Preço não confirmado.", es: "Precio no confirmado." },
+    links: [["instagram", "https://www.instagram.com/buddhabistroasiatico/"], ["avaliações", "https://www.tripadvisor.com/Restaurant_Review-g303272-d15095927-Reviews-Buddha_Bistro_Asiatico-Salvador_State_of_Bahia.html"]],
+    map: "Buddha Bistrô Asiático Rua das Rosas 492 Pituba Salvador", photo: "Buddha Bistrô Asiático Salvador" },
+  // Fontes: pelourinhodiaenoite.salvador.ba.gov.br (2026); TripAdvisor (nota 4,7, avaliações de jul/2026)
+  { id: "cuco", cat: "comida", dur: 75, min: 45, max: 150, win: [W([SAB, SEG, TER, QUA, QUI, SEX], "12:00", "22:00"), W([DOM], "12:00", "17:00")],
+    name: { pt: "Cuco Bistrô (carnes e grelhados)", es: "Cuco Bistrô (carnes y parrilla)" },
+    desc: { pt: "Bistrô no Largo do Cruzeiro de São Francisco, no meio do Pelourinho, com filé mignon, frango grelhado, chorizo Angus e massa fresca. Também tem moqueca: é só pular. Nota 4,7 no TripAdvisor. Reservar: (71) 3321-8722.", es: "Bistró en el Largo do Cruzeiro de São Francisco, en pleno Pelourinho, con filete, pollo a la parrilla, chorizo Angus y pasta fresca. También tiene moqueca: basta saltarla. Nota 4,7 en TripAdvisor. Reservar: +55 71 3321-8722." },
+    hours: { pt: "Seg a sáb 12h às 22h; dom 12h às 17h. Feriado não confirmado.", es: "Lun a sáb 12:00 a 22:00; dom 12:00 a 17:00. Festivo no confirmado." },
+    cost: { pt: "Preço não confirmado.", es: "Precio no confirmado." },
+    links: [["instagram", "https://www.instagram.com/cucobistro/"], ["info", "https://pelourinhodiaenoite.salvador.ba.gov.br/cuco-bistro-5/"]],
+    map: "Cuco Bistrô Largo do Cruzeiro de São Francisco Pelourinho Salvador", photo: "Cuco Bistrô Pelourinho" },
+  // Fontes: TripAdvisor (horário e telefone); Bahia Terra, 06/10/2024 (cardápio); salvadordabahia.com, guia de hamburguerias de 27/05/2026
+  { id: "bravo", cat: "comida", dur: 75, min: 45, max: 120, win: [W([DOM, SEG, TER, QUA], "18:00", "23:00"), W([QUI], "18:00", "23:30"), W([SEX, SAB], "18:00", "24:00")],
+    timeMsg: { pt: "O Bravo abre só à noite, a partir das 18h.", es: "Bravo abre solo de noche, desde las 18:00." },
+    name: { pt: "Bravo Burger & Beer (Barra)", es: "Bravo Burger & Beer (Barra)" },
+    desc: { pt: "Hamburgueria na mesma avenida da hospedagem: hambúrguer de 180 g, smash e um de falafel. Telefone (71) 3561-0829.", es: "Hamburguesería en la misma avenida del alojamiento: hamburguesa de 180 g, smash y una de falafel. Teléfono +55 71 3561-0829." },
+    hours: { pt: "Dom a qua 18h às 23h; qui até 23h30; sex e sáb até meia-noite (TripAdvisor).", es: "Dom a mié 18:00 a 23:00; jue hasta 23:30; vie y sáb hasta 24:00 (TripAdvisor)." },
+    cost: { pt: "Preço não confirmado.", es: "Precio no confirmado." },
+    links: [["instagram", "https://www.instagram.com/eusoubravo/"], ["avaliações", "https://www.tripadvisor.com/Restaurant_Review-g303272-d13848736-Reviews-BRAVO_Burger_Beer_Barra-Salvador_State_of_Bahia.html"]],
+    map: "Bravo Burger Beer Avenida Sete de Setembro 3959 Barra Salvador", photo: "Bravo Burger Beer Barra Salvador" },
+  // Fontes: tijuana.com.br (acessado 07/10/2026); A Tarde, 22/04/2026 (horário); TripAdvisor (segunda fechado)
+  { id: "tijuana", cat: "comida", dur: 75, min: 45, max: 150, win: [W([SAB, DOM, TER, QUA, QUI, SEX], "17:00", "23:00")],
+    dayMsg: { 2: { pt: "O Tijuana fecha às segundas.", es: "Tijuana cierra los lunes." } },
+    timeMsg: { pt: "O Tijuana abre às 17h.", es: "Tijuana abre a las 17:00." },
+    name: { pt: "Tijuana (mexicano)", es: "Tijuana (mexicano)" },
+    desc: { pt: "Restaurante mexicano na Pituba, perto da Costa Azul: fajitas, burritos, enchiladas e quesadillas. Telefone (71) 3345-5038, WhatsApp (71) 98654-7552.", es: "Restaurante mexicano en Pituba, cerca de Costa Azul: fajitas, burritos, enchiladas y quesadillas. Teléfono +55 71 3345-5038, WhatsApp +55 71 98654-7552." },
+    hours: { pt: "Ter a dom, a partir das 17h; fecha às segundas. Horário de fechar não confirmado.", es: "Mar a dom, desde las 17:00; cierra los lunes. Hora de cierre no confirmada." },
+    cost: { pt: "Preço não confirmado.", es: "Precio no confirmado." },
+    links: [["info", "https://www.tijuana.com.br/"], ["instagram", "https://www.instagram.com/restaurantetijuana/"]],
+    map: "Tijuana Mexican Bar Rua Minas Gerais 271 Pituba Salvador", photo: "Tijuana restaurante mexicano Salvador" },
+  // Fontes: TripAdvisor (horário, telefone, nota 5,0 com 962 avaliações, avaliação de ago/2026); Correio, 20/05/2023 (cardápio); lista da Restaurant Week 2026
+  { id: "vishnu", cat: "comida", dur: 90, min: 60, max: 150, win: [W([QUA, QUI, SEX], "17:30", "22:30"), W([SAB], "12:00", "22:30"), W([DOM], "12:00", "17:00")],
+    dayMsg: { all: { pt: "O Vishnu fecha às segundas e terças.", es: "Vishnu cierra los lunes y martes." } },
+    name: { pt: "Vishnu (indiano)", es: "Vishnu (indio)" },
+    desc: { pt: "Comida indiana feita por um chef indiano no Rio Vermelho: butter chicken, curry de carneiro e pão roti de tandoor. Nota 5,0 no TripAdvisor, entre os melhores da cidade. Reservar: (71) 98400-5909. Participa da Restaurant Week.", es: "Comida india hecha por un chef indio en Rio Vermelho: butter chicken, curry de cordero y pan roti de tandoor. Nota 5,0 en TripAdvisor, entre los mejores de la ciudad. Reservar: +55 71 98400-5909. Participa en la Restaurant Week." },
+    hours: { pt: "Qua a sex 17h30 às 22h30; sáb 12h às 22h30; dom 12h às 17h; fecha segunda e terça (TripAdvisor).", es: "Mié a vie 17:30 a 22:30; sáb 12:00 a 22:30; dom 12:00 a 17:00; cierra lunes y martes (TripAdvisor)." },
+    cost: { pt: "Preço não confirmado.", es: "Precio no confirmado." },
+    links: [["instagram", "https://www.instagram.com/vishnuculinariaindiana/"], ["avaliações", "https://www.tripadvisor.com/Restaurant_Review-g303272-d25218809-Reviews-Vishnu_Culinaria_Indiana-Salvador_State_of_Bahia.html"]],
+    map: "Vishnu Culinária Indiana Rua Itabuna 286 Rio Vermelho Salvador", photo: "Vishnu Culinária Indiana Salvador" },
+  // Fontes: cardápio da casa em menudigital.app.br, atualizado em 01/10/2026 (horários e preços); bio.site/lapulperia; lista da Restaurant Week 2026
+  { id: "pulperia", cat: "comida", dur: 90, min: 60, max: 150, win: [W([SEG, DOM], "11:45", "17:00"), W([TER, QUA, QUI], "11:45", "16:00"), W([TER, QUA, QUI], "18:00", "22:00"), W([SEX, SAB], "11:45", "17:00"), W([SEX, SAB], "19:00", "23:00")],
+    name: { pt: "La Pulperia (parrilla argentina)", es: "La Pulperia (parrilla argentina)" },
+    desc: { pt: "Parrilla argentina no Paseo Itaigara: bife de chorizo, ancho, entraña, frango e empanadas. Domingo e feriado só no almoço. WhatsApp (71) 99733-4503. Participa da Restaurant Week.", es: "Parrilla argentina en el Paseo Itaigara: bife de chorizo, ancho, entraña, pollo y empanadas. Domingo y festivo solo al almuerzo. WhatsApp +55 71 99733-4503. Participa en la Restaurant Week." },
+    hours: { pt: "Seg 11h45 às 16h; ter a qui 11h45 às 16h e 18h às 22h; sex e sáb 11h45 às 17h e 19h às 23h; dom e feriado 11h45 às 17h.", es: "Lun 11:45 a 16:00; mar a jue 11:45 a 16:00 y 18:00 a 22:00; vie y sáb 11:45 a 17:00 y 19:00 a 23:00; dom y festivos 11:45 a 17:00." },
+    cost: { pt: "Bife de chorizo ou ancho de 350 g com dois acompanhamentos R$169,90; entraña R$139,90; frango R$89,90; empanada R$25,90 a 29,90 (out/2026).", es: "Bife de chorizo o ancho de 350 g con dos acompañamientos R$169,90; entraña R$139,90; pollo R$89,90; empanada R$25,90 a 29,90 (oct/2026)." },
+    links: [["cardápio", "https://www.menudigital.app.br/lapulperia2"], ["instagram", "https://www.instagram.com/lapulperia.ssa/"]],
+    map: "La Pulperia Paseo Itaigara Salvador", photo: "La Pulperia parrilla Salvador" },
+  // Fontes: tokaigourmet.com.br (atualizado em 21/09/2026); TripAdvisor (horário, nota 4,5); shoppingbarra.com (horário do shopping, 05/05/2026)
+  { id: "tokai", cat: "comida", dur: 75, min: 45, max: 150, win: [W([SAB, SEG, TER, QUA, QUI, SEX], "11:00", "23:00"), W([DOM], "12:00", "23:00")],
+    name: { pt: "Tokai Gourmet (chinês e japonês)", es: "Tokai Gourmet (chino y japonés)" },
+    desc: { pt: "Mais de 200 pratos chineses, japoneses e tailandeses no Shopping Barra, perto da hospedagem. Reserva pelo site ou WhatsApp (71) 98174-7853.", es: "Más de 200 platos chinos, japoneses y tailandeses en el Shopping Barra, cerca del alojamiento. Reserva por la web o WhatsApp +55 71 98174-7853." },
+    hours: { pt: "Seg a sáb 11h às 23h; dom 12h às 23h (TripAdvisor). No feriado de 2024, os restaurantes do shopping abriram ao meio-dia.", es: "Lun a sáb 11:00 a 23:00; dom 12:00 a 23:00 (TripAdvisor). En el festivo de 2024, los restaurantes del centro comercial abrieron al mediodía." },
+    cost: { pt: "Preço não confirmado.", es: "Precio no confirmado." },
+    links: [["reserva", "https://dguests.com/tokaigourmet"], ["info", "http://tokaigourmet.com.br/"]],
+    map: "Tokai Gourmet Shopping Barra Salvador", photo: "Tokai Gourmet Salvador" },
+  // Fontes: casadoamarelindo.com/pelo-bistro (horário e telefone); TripAdvisor (nota 4,5, avaliação de ago/2026)
+  { id: "pelobistro", cat: "comida", dur: 75, min: 45, max: 150, win: [W(ALL, "11:00", "15:00"), W(ALL, "18:00", "21:00")],
+    name: { pt: "Pelô Bistrô (franco-brasileiro)", es: "Pelô Bistrô (franco-brasileño)" },
+    desc: { pt: "Bistrô do Hotel Casa do Amarelindo, no Pelourinho, com terraço. Nas avaliações aparecem curry de frango e salada Caesar com frango, além de frutos do mar. Telefone e WhatsApp (71) 3266-8550.", es: "Bistró del Hotel Casa do Amarelindo, en el Pelourinho, con terraza. En las reseñas aparecen curry de pollo y ensalada César con pollo, además de mariscos. Teléfono y WhatsApp +55 71 3266-8550." },
+    hours: { pt: "Todos os dias, 11h às 15h e 18h às 21h.", es: "Todos los días, 11:00 a 15:00 y 18:00 a 21:00." },
+    cost: { pt: "Preço não confirmado.", es: "Precio no confirmado." },
+    links: [["info", "https://www.casadoamarelindo.com/pelo-bistro.html"], ["avaliações", "https://www.tripadvisor.com/Restaurant_Review-g303272-d1084380-Reviews-Pelo_Bistro-Salvador_State_of_Bahia.html"]],
+    map: "Pelô Bistrô Casa do Amarelindo Pelourinho Salvador", photo: "Pelô Bistrô Casa do Amarelindo" },
+  // Fontes: TripAdvisor (horário, telefone; endereço diverge do de 2024); Daqui de Salvador, 14/11/2024; lista da Restaurant Week 2026
+  { id: "peruvian", cat: "comida", dur: 75, min: 45, max: 120, win: [W([DOM, SEG, TER, QUA, QUI], "11:30", "23:00"), W([SEX, SAB], "11:30", "24:00")],
+    name: { pt: "Peruvian Chicken (frango peruano)", es: "Peruvian Chicken (pollo a la brasa)" },
+    desc: { pt: "Pollo a la brasa e lomo saltado no Rio Vermelho. Casual. O endereço muda conforme a fonte (Praça Brigadeiro Faria Rocha ou Rua Presidente Kennedy): confirmar pelo WhatsApp (71) 99108-6043. Participa da Restaurant Week.", es: "Pollo a la brasa y lomo saltado en Rio Vermelho. Casual. La dirección cambia según la fuente (Praça Brigadeiro Faria Rocha o Rua Presidente Kennedy): confirmar por WhatsApp +55 71 99108-6043. Participa en la Restaurant Week." },
+    hours: { pt: "Dom a qui 11h30 às 23h, inclusive segunda; sex e sáb até meia-noite (TripAdvisor).", es: "Dom a jue 11:30 a 23:00, incluido el lunes; vie y sáb hasta las 24:00 (TripAdvisor)." },
+    cost: { pt: "Preço não confirmado.", es: "Precio no confirmado." },
+    links: [["instagram", "https://www.instagram.com/peruvianchicken.oficial/"], ["avaliações", "https://www.tripadvisor.com/Restaurant_Review-g303272-d26772417-Reviews-Peruvian_Chicken_Pollo_A_La_Brasa-Salvador_State_of_Bahia.html"]],
+    map: "Peruvian Chicken Pollo a la Brasa Rio Vermelho Salvador", photo: "Peruvian Chicken Pollo a la Brasa Salvador" },
+  // Fontes: shoppingbarra.com/loja/santiago-culinaria-iberica (01/09/2026); Doris Pinheiro, 10/07/2025 (menu executivo); lista da Restaurant Week 2026
+  { id: "santiago", cat: "comida", dur: 75, min: 45, max: 150, win: [W(ALL, "12:00", "23:00")],
+    name: { pt: "Santiago (cozinha ibérica)", es: "Santiago (cocina ibérica)" },
+    desc: { pt: "Cozinha espanhola e portuguesa no Shopping Barra, piso L4 Norte. O almoço executivo de segunda a sexta (12h às 15h) tinha frango à la plancha, bife a cavalo, milanesa de frango e croquete de jamón. Reservas: (71) 98461-5128. Participa da Restaurant Week.", es: "Cocina española y portuguesa en el Shopping Barra, piso L4 Norte. El almuerzo ejecutivo de lunes a viernes (12:00 a 15:00) tenía pollo a la plancha, bistec a caballo, milanesa de pollo y croquetas de jamón. Reservas: +55 71 98461-5128. Participa en la Restaurant Week." },
+    hours: { pt: "Horário do shopping para restaurantes, 12h às 23h30; confirmar o da casa.", es: "Horario del centro comercial para restaurantes, 12:00 a 23:30; confirmar el del local." },
+    cost: { pt: "Almoço executivo de 3 pratos R$79,90 (jul/2025).", es: "Almuerzo ejecutivo de 3 tiempos R$79,90 (jul/2025)." },
+    links: [["info", "https://shoppingbarra.com/loja/santiago-culinaria-iberica/"], ["instagram", "https://instagram.com/santiago.culinaria"]],
+    map: "Santiago Culinária Ibérica Shopping Barra Salvador", photo: "Santiago Culinária Ibérica Salvador" },
+  // Fontes: TripAdvisor (horário, nota 5,0, avaliação de jun/2026); Correio, 16/07/2022 (chef peruano, telefone)
+  { id: "operuano", cat: "comida", dur: 75, min: 45, max: 120, win: [W([SAB, SEG, TER, QUA, QUI, SEX], "12:00", "22:00"), W([DOM], "12:00", "20:00")],
+    name: { pt: "O Peruano (Barra)", es: "O Peruano (Barra)" },
+    desc: { pt: "Restaurante simples de chef peruano na Barra, perto da hospedagem. Pedir lomo saltado: a cozinha peruana tem muito frutos do mar. Telefone (71) 98270-0072.", es: "Restaurante sencillo de chef peruano en Barra, cerca del alojamiento. Pedir lomo saltado: la cocina peruana tiene muchos mariscos. Teléfono +55 71 98270-0072." },
+    hours: { pt: "Seg a sáb 12h às 22h; dom 12h às 20h (TripAdvisor).", es: "Lun a sáb 12:00 a 22:00; dom 12:00 a 20:00 (TripAdvisor)." },
+    cost: { pt: "Preço não confirmado.", es: "Precio no confirmado." },
+    links: [["instagram", "https://www.instagram.com/cozinhaperuana/"], ["avaliações", "https://www.tripadvisor.com/Restaurant_Review-g303272-d24182200-Reviews-O_Peruano-Salvador_State_of_Bahia.html"]],
+    map: "O Peruano Rua Eduardo Diniz Gonçalves 79 Barra Salvador", photo: "O Peruano restaurante Barra Salvador" },
+  // Fontes: Alô Alô Bahia, 18/12/2024 (abertura); Revista Yacht, 19/05/2026 (menu da Restaurant Week); salvadordabahia.com, 02/06/2025 (horário)
+  { id: "aina", cat: "comida", dur: 75, min: 45, max: 120, win: [W([SAB, DOM, TER, QUA, QUI, SEX], "18:00", "23:00")],
+    dayMsg: { 2: { pt: "O Ainá fecha às segundas.", es: "Ainá cierra los lunes." } },
+    timeMsg: { pt: "O Ainá abre às 18h e fecha às 23h.", es: "Ainá abre a las 18:00 y cierra a las 23:00." },
+    name: { pt: "Ainá Lamen (ramen)", es: "Ainá Lamen (ramen)" },
+    desc: { pt: "Casa de lámen no Rio Vermelho, com uns 20 lugares: ramen de barriga de porco, copa-lombo, frango ou vegetariano, e frango karaage. Reserva por mensagem no Instagram.", es: "Casa de ramen en Rio Vermelho, con unos 20 puestos: ramen de panceta, bondiola, pollo o vegetariano, y pollo karaage. Reserva por mensaje en Instagram." },
+    hours: { pt: "Ter a dom, 18h às 23h; fecha às segundas.", es: "Mar a dom, 18:00 a 23:00; cierra los lunes." },
+    cost: { pt: "Menu da Restaurant Week de maio/2026: R$74,90 no jantar.", es: "Menú de la Restaurant Week de mayo/2026: R$74,90 a la cena." },
+    links: [["instagram", "https://www.instagram.com/ainalamen/"], ["info", "https://aloalobahia.com/noticias/2024/12/18/a-onda-do-lamen-chega-a-salvador-com-restaurante-especializado-no-rio-vermelho/"]],
+    map: "Ainá Lamen Rio Vermelho Salvador", photo: "Ainá Lamen Salvador" },
+  // Fontes: salvadordabahia.com (cardápio e telefone); TripAdvisor (horário, nota 4,9 com 2.525 avaliações, avaliação de jul/2026); lista da Restaurant Week 2026
+  { id: "jabu", cat: "comida", dur: 90, min: 60, max: 150, win: [W([TER, QUA], "17:00", "23:00"), W([QUI, SEX], "17:00", "24:00"), W([SAB], "13:00", "24:00"), W([DOM], "12:00", "16:00")],
+    dayMsg: { 2: { pt: "O Jabú fecha às segundas.", es: "Jabú cierra los lunes." } },
+    name: { pt: "Jabú Restô & Bar (bistrô)", es: "Jabú Restô & Bar (bistró)" },
+    desc: { pt: "Bistrô de chef francês no Rio Vermelho: filé mignon ao molho de vinho, ravióli de búfala e menu vegetariano sob pedido. Nota 4,9 no TripAdvisor. Reservar: (71) 99910-6632. Participa da Restaurant Week.", es: "Bistró de chef francés en Rio Vermelho: filete en salsa de vino, ravioli de búfala y menú vegetariano a pedido. Nota 4,9 en TripAdvisor. Reservar: +55 71 99910-6632. Participa en la Restaurant Week." },
+    hours: { pt: "Ter e qua 17h às 23h; qui e sex 17h à meia-noite; sáb 13h à meia-noite; dom 12h às 16h; fecha às segundas (TripAdvisor).", es: "Mar y mié 17:00 a 23:00; jue y vie 17:00 a 24:00; sáb 13:00 a 24:00; dom 12:00 a 16:00; cierra los lunes (TripAdvisor)." },
+    cost: { pt: "De R$90 a 150 por pessoa com bebida, segundo uma avaliação sem data.", es: "De R$90 a 150 por persona con bebida, según una reseña sin fecha." },
+    links: [["instagram", "https://www.instagram.com/jabu_salvador/"], ["info", "https://www.salvadordabahia.com/en/experiences/jabu-resto-bar/"]],
+    map: "Jabú Restô Bar Rua Eurycles de Mattos 191 Rio Vermelho Salvador", photo: "Jabú Restô Bar Salvador" },
   // Fontes: Correio, 13/04/2025 e 21/09/2025; A Tarde, 09/07/2026; shoppingbarra.com (acessado 02/10/2026)
   { id: "oliva", cat: "comida", dur: 90, min: 60, max: 150, win: [W([SAB, SEG, TER, QUA, QUI, SEX], "17:30", "22:00"), W([DOM], "17:30", "21:00")],
     name: { pt: "Oliva Gourmet (rodízio de pizza e massas)", es: "Oliva Gourmet (rodizio de pizza y pasta)" },
@@ -699,7 +814,7 @@ const ACTS = [
     links: [["info", "https://revistahoteis.com.br/mistura-contorno-reabre-em-salvador-ba/"]],
     map: "Mistura Contorno Salvador", photo: "Mistura Contorno Salvador vista" },
   { id: "jantar", cat: "comida", dur: 90, min: 45, max: 180, win: [W(ALL, "18:00", "24:00")],
-    name: { pt: "Jantar perto do hotel", es: "Cena cerca del hotel" },
+    name: { pt: "Jantar perto da hospedagem", es: "Cena cerca del alojamiento" },
     desc: { pt: "Jantar sem reserva perto de onde estiverem.", es: "Cena sin reserva cerca de donde estén." },
     links: [] },
 
@@ -751,10 +866,10 @@ const ACTS = [
     links: [["horários", "https://biotur.com.br/horarios-e-tarifas/"], ["taxa", "https://aloalobahia.com/noticias/2026/07/08/cairu-suspende-aumento-da-taxa-de-acesso-a-morro-de-sao-paulo-valor-segue-em-r-70/"]],
     map: "Terminal Náutico da Bahia Salvador", photo: "Morro de São Paulo Bahia praia" },
   // ---------- Pessoal ----------
-  { id: "helena", cat: "helena", dur: 120, min: 30, max: 720, win: [W(ALL, "06:00", "24:00")], editable: true,
+  { id: "helena", cat: "helena", dur: 90, min: 30, max: 720, win: [W(ALL, "06:00", "24:00")], editable: true,
     name: { pt: "Visita à Helena", es: "Visita a Helena" },
-    desc: { pt: "Tempo com a Helena. Ajustem dia, horário e duração quando souberem.", es: "Tiempo con Helena. Ajusten día, hora y duración cuando sepan." },
-    links: [] },
+    desc: { pt: "Tempo com a Helena, na Costa Azul. Ajustem dia, horário e duração quando souberem. Contem o Uber de ida e volta: a Costa Azul fica do outro lado da orla, entre o Rio Vermelho e o aeroporto.", es: "Tiempo con Helena, en Costa Azul. Ajusten día, hora y duración cuando sepan. Cuenten el Uber de ida y vuelta: Costa Azul queda al otro lado de la costanera, entre Rio Vermelho y el aeropuerto." },
+    links: [], map: "Costa Azul, Salvador, BA" },
   { id: "sexo", cat: "livre", dur: 60, min: 15, max: 240, win: [W(ALL, "06:00", "24:00")], editable: true,
     name: { pt: "Sexo", es: "Sexo" },
     desc: { pt: "👀", es: "👀" },
@@ -769,9 +884,20 @@ const ACTS = [
     links: [] },
 ];
 
-// Roteiro padrão, versão 5 (com o que ela marcou: sem comida baiana nem frutos do mar, Helena quase todo dia, jogo no domingo, surfe na sexta)
-const PLAN_VER = 5;
+// Roteiro padrão, versão 6 (Helena 1h30 na Costa Azul, hospedagem no Porto da Barra, restaurantes de cozinhas variadas e só um italiano)
+const PLAN_VER = 6;
 const DEFAULT_PLAN = [
+  ["chegada", SAB, "15:25", 125], ["helena", SAB, "18:15", 90], ["buddha", SAB, "20:15", 75],
+  ["helena", DOM, "09:00", 90], ["farol", DOM, "11:15", 60], ["carvao", DOM, "12:30", 75], ["ribeira", DOM, "14:30", 150], ["humaita", DOM, "17:00", 45], ["futebol", DOM, "18:30", 210],
+  ["helena", SEG, "09:00", 90], ["mercado", SEG, "11:15", 75], ["pelourinho", SEG, "12:30", 60], ["cuco", SEG, "13:30", 75], ["santoantonio", SEG, "15:00", 165], ["bravo", SEG, "19:30", 75],
+  ["mergulho", TER, "08:30", 120], ["portobarra", TER, "10:45", 105], ["mignon", TER, "12:45", 75], ["solar", TER, "16:00", 105], ["helena", TER, "18:30", 90], ["tijuana", TER, "20:30", 75],
+  ["praiadoforte", QUA, "07:00", 480], ["vishnu", QUA, "19:30", 90],
+  ["escuna", QUI, "09:00", 390], ["volpi", QUI, "19:30", 90],
+  ["helena", SEX, "09:00", 90], ["surf", SEX, "11:30", 90], ["loro", SEX, "13:00", 75], ["stella", SEX, "14:15", 120], ["pereira", SEX, "19:00", 90], ["aeroporto", SEX, "21:30", 70],
+];
+
+// Roteiro padrão da versão 5 (usado só para reconhecer celulares que não mudaram nada)
+const DEFAULT_PLAN_V5 = [
   ["chegada", SAB, "15:25", 125], ["helena", SAB, "18:00", 120], ["mammajamma", SAB, "20:15", 75],
   ["farol", DOM, "09:00", 75], ["helena", DOM, "10:30", 120], ["pereira", DOM, "12:45", 75], ["ribeira", DOM, "14:30", 150], ["humaita", DOM, "17:00", 45], ["futebol", DOM, "18:30", 210],
   ["helena", SEG, "09:00", 120], ["mercado", SEG, "11:15", 75], ["pelourinho", SEG, "12:30", 60], ["gero", SEG, "13:45", 75], ["santoantonio", SEG, "15:15", 150], ["alfredoro", SEG, "19:30", 90],
@@ -841,8 +967,8 @@ const EXTRA = {};
 function X(id, aPt, aEs, bPt, bEs, pPt, pEs, tags) {
   EXTRA[id] = { area: aPt ? { pt: aPt, es: aEs } : null, brief: { pt: bPt, es: bEs }, p: pPt ? { pt: pPt, es: pEs } : null, tags: tags || [] };
 }
-X("chegada", "Aeroporto até a Barra", "Aeropuerto a Barra", "Pouso 15h25, malas, Uber e check-in", "Aterrizaje 15:25, maletas, Uber y check-in", "Uber R$40 a 70", "Uber R$40 a 70");
-X("aeroporto", "Hotel até o aeroporto", "Hotel al aeropuerto", "Uber de 45 a 60 min; chegar às 22h40", "Uber de 45 a 60 min; llegar a las 22:40", "Uber R$40 a 70", "Uber R$40 a 70");
+X("chegada", "Aeroporto até o Porto da Barra", "Aeropuerto a Porto da Barra", "Pouso 15h25, malas, Uber e check-in", "Aterrizaje 15:25, maletas, Uber y check-in", "Uber R$40 a 70", "Uber R$40 a 70");
+X("aeroporto", "Hospedagem até o aeroporto", "Alojamiento al aeropuerto", "Uber de 45 a 60 min; chegar às 22h40", "Uber de 45 a 60 min; llegar a las 22:40", "Uber R$40 a 70", "Uber R$40 a 70");
 X("farol", "Barra", "Barra", "Forte, farol e baleias até 11/10", "Fuerte, faro y ballenas hasta el 11/10", "Grátis; forte R$20", "Gratis; fuerte R$20");
 X("portobarra", "Barra", "Barra", "Praia de água calma para nadar", "Playa de agua tranquila para nadar", "Grátis", "Gratis");
 X("mergulho", "Barra", "Barra", "Com instrutor, sem certificação, até 10 m", "Con instructor, sin certificación, hasta 10 m", "US$57 por pessoa", "US$57 por persona", ["reserva"]);
@@ -876,13 +1002,13 @@ X("poro", "Santo Antônio Além do Carmo", "Santo Antônio Além do Carmo", "Vis
 X("pala7", "Rua Chile", "Rua Chile", "Grelhados de Claude Troisgros no terraço", "Parrilla de Claude Troisgros en la terraza", "", "", ["reserva", "confirmar"]);
 X("arento", "Rua Chile (Fera Palace)", "Rua Chile (Fera Palace)", "Mediterrâneo no lobby histórico do hotel", "Mediterráneo en el lobby histórico del hotel", "~R$200 por pessoa", "~R$200 por persona");
 X("mistura", "Av. Contorno", "Av. Contorno", "Vista de 360 graus da baía", "Vista de 360 grados de la bahía");
-X("jantar", "Perto do hotel", "Cerca del hotel", "Jantar sem reserva", "Cena sin reserva");
+X("jantar", "Porto da Barra", "Porto da Barra", "Jantar sem reserva", "Cena sin reserva");
 X("praiadoforte", "Litoral norte, 1h30", "Litoral norte, 1h30", "Tartarugas marinhas e piscinas naturais", "Tortugas marinas y piscinas naturales", "R$120 + TAMAR R$54", "R$120 + TAMAR R$54", ["reserva"]);
 X("escuna", "Baía de Todos os Santos", "Bahía de Todos los Santos", "Ilha dos Frades e Itaparica, música a bordo", "Isla de los Frades e Itaparica, música a bordo", "R$100 a 162 + taxas", "R$100 a 162 + tasas", ["reserva"]);
 X("mare", "Ilha de Maré (barco de 20 min)", "Isla de Maré (lancha de 20 min)", "Comunidades quilombolas e renda de bilro", "Comunidades quilombolas y encaje de bolillos", "Barco ~R$8", "Lancha ~R$8", ["dinheiro"]);
 X("reconcavo", "Recôncavo, 2h10 de ônibus", "Recôncavo, 2h10 en bus", "Cidades coloniais e fábrica de charutos", "Pueblos coloniales y fábrica de puros", "Ônibus ~R$43 por trecho", "Bus ~R$43 por trayecto", ["confirmar"]);
 X("baleias", "Baía de Todos os Santos", "Bahía de Todos los Santos", "Barco para ver baleias jubarte", "Barco para ver ballenas jorobadas", "R$380 por pessoa", "R$380 por persona", ["reserva", "confirmar"]);
-X("helena", "", "", "Tempo com a Helena", "Tiempo con Helena");
+X("helena", "Costa Azul", "Costa Azul", "Tempo com a Helena", "Tiempo con Helena");
 X("livre", "", "", "Descanso, hotel ou improviso", "Descanso, hotel o improvisar");
 X("outro", "", "", "Bloco com nome livre", "Bloque con nombre libre");
 X("sexo", "", "", "👀", "👀");
@@ -912,6 +1038,19 @@ X("alfredoro", "Ondina", "Ondina", "Italiano tradicional, reaberto em 2026", "It
 X("gero", "Praça Castro Alves", "Praça Castro Alves", "Italiano do Hotel Fasano", "Italiano del Hotel Fasano", "R$145 a 190 por pessoa", "R$145 a 190 por persona", ["reserva"]);
 X("loro", "Stella Maris", "Stella Maris", "Barraca na areia, com carnes e massas", "Kiosco en la arena, con carnes y pastas", "", "");
 X("almacen", "Shopping Barra", "Shopping Barra", "Empório com pizza, choripán e picanha", "Almacén con pizza, choripán y picanha", "Pizza R$55 a 60", "Pizza R$55 a 60");
+X("buddha", "Pituba", "Pituba", "Asiático: pad thai, guioza, noodles", "Asiático: pad thai, gyozas, noodles", "", "", ["reserva"]);
+X("cuco", "Pelourinho", "Pelourinho", "Filé, frango e grelhados no Pelourinho", "Filete, pollo y parrilla en el Pelourinho", "", "", ["reserva"]);
+X("bravo", "Porto da Barra", "Porto da Barra", "Hambúrguer perto da hospedagem", "Hamburguesas cerca del alojamiento", "", "");
+X("tijuana", "Pituba", "Pituba", "Mexicano: fajitas, burritos, enchiladas", "Mexicano: fajitas, burritos, enchiladas", "", "", ["confirmar"]);
+X("vishnu", "Rio Vermelho", "Rio Vermelho", "Indiano: butter chicken e curry", "Indio: butter chicken y curry", "", "", ["reserva"]);
+X("pulperia", "Itaigara", "Itaigara", "Parrilla argentina", "Parrilla argentina", "R$90 a 170 o prato", "R$90 a 170 el plato");
+X("tokai", "Shopping Barra", "Shopping Barra", "Chinês, japonês e tailandês", "Chino, japonés y tailandés", "", "", ["reserva"]);
+X("pelobistro", "Pelourinho", "Pelourinho", "Bistrô com terraço no Pelourinho", "Bistró con terraza en el Pelourinho", "", "");
+X("peruvian", "Rio Vermelho", "Rio Vermelho", "Pollo a la brasa e lomo saltado", "Pollo a la brasa y lomo saltado", "", "", ["confirmar"]);
+X("santiago", "Shopping Barra", "Shopping Barra", "Espanhol e português, almoço executivo", "Español y portugués, almuerzo ejecutivo", "R$79,90 o executivo", "R$79,90 el ejecutivo", ["confirmar"]);
+X("operuano", "Barra", "Barra", "Peruano simples: lomo saltado", "Peruano sencillo: lomo saltado", "", "");
+X("aina", "Rio Vermelho", "Rio Vermelho", "Ramen de porco, frango ou vegetariano", "Ramen de cerdo, pollo o vegetariano", "", "", ["reserva"]);
+X("jabu", "Rio Vermelho", "Rio Vermelho", "Bistrô francês: filé ao vinho", "Bistró francés: filete al vino", "R$90 a 150 por pessoa", "R$90 a 150 por persona", ["reserva"]);
 ACTS.forEach((a) => Object.assign(a, EXTRA[a.id] || { brief: null, area: null, p: null, tags: [] }));
 
 </script>
@@ -925,8 +1064,8 @@ const T = {
     sunset: "pôr do sol 17h31", sunMark: "17h31", tide: "maré baixa", sunsetInfo: "Pôr do sol 17h31", tideInfo: "Maré baixa",
     beforeArrival: "Ainda viajando", afterAirport: "Aeroporto e voo",
     hint: "Toque num bloco para ver detalhes e links. Segure meio segundo e arraste para mudar o horário, ou solte sobre outro dia lá em cima. Puxe a borda de baixo para mudar a duração.",
-    hours: "Horário", cost: "Custo", where: "Onde", info: "Ver informações", map: "Mapa", photos: "Fotos",
-    linkNames: { info: "Ver informações", reserva: "Reservar", instagram: "Instagram", baleias: "Baleias", forte: "Forte", sorveteria: "Sorveteria", "horários": "Horários", ranking: "Ranking", tour: "Tour", TAMAR: "TAMAR", piscinas: "Piscinas", "como chegar": "Como chegar", lojas: "Lojas", ingressos: "Ingressos", cadastro: "Cadastro facial", agenda: "Agenda", taxa: "Taxa da ilha", lista: "Lista de restaurantes", "avaliações": "Avaliações", "preços": "Preços", "cardápio": "Cardápio" },
+    hours: "Horário", cost: "Custo", where: "Onde", info: "Ver informações", map: "Mapa", photos: "Fotos", route: "Como chegar", lodging: "Onde vamos ficar", lodgingSub: "Av. Sete de Setembro, 3633, Porto da Barra. Toque para abrir no mapa.",
+    linkNames: { info: "Ver informações", reserva: "Reservar", instagram: "Instagram", baleias: "Baleias", forte: "Forte", sorveteria: "Sorveteria", "horários": "Horários", ranking: "Ranking", tour: "Tour", TAMAR: "TAMAR", piscinas: "Piscinas", "como chegar": "Como chegar", lojas: "Lojas", ingressos: "Ingressos", cadastro: "Cadastro facial", agenda: "Agenda", taxa: "Taxa da ilha", lista: "Lista de restaurantes", "avaliações": "Avaliações", "preços": "Preços", "cardápio": "Cardápio", rotaHosp: "Rota até a hospedagem", rotaAero: "Rota até o aeroporto" },
     dayL: "Dia", startL: "Início", durL: "Duração", noteL: "Anotação", nameL: "Nome do bloco",
     remove: "Remover", close: "Fechar", add: "Adicionar ao cronograma", fixedBlock: "Bloco fixo da viagem.",
     conflictWith: "Conflito de horário com", conflict: "conflito", noStart: "Não há horário possível neste dia.",
@@ -946,7 +1085,7 @@ const T = {
     tagNames: { reserva: "Reservar", dinheiro: "Levar dinheiro", confirmar: "Confirmar horário", uber: "Ir de Uber", roupa: "Roupa clara", cedo: "Chegar cedo", conta: "Conferir a conta", br: "Típico do Brasil", ingresso: "Comprar ingresso" },
     outOfHours: "fora do horário", outAlert: "Fora do horário possível",
     pinnedHint: "O início é fixo (pouso às 15h25). Se o voo atrasar ou for internacional, aumente a duração aqui.",
-    updMsg: (v) => "O roteiro sugerido foi refeito com o que ela marcou: sem comida baiana nem frutos do mar, sem Feira de São Joaquim, Bonfim e Boteco do França, com um horário para a Helena quase todo dia, o jogo do Bahia no domingo e surfe em Stella Maris na sexta. Usar a versão nova? As mudanças feitas neste celular serão substituídas.",
+    updMsg: (v) => (v >= 5 ? "O roteiro sugerido foi ajustado: Helena com 1h30, horários pensando na hospedagem no Porto da Barra e na Costa Azul, e restaurantes de cozinhas variadas (asiático, mexicano, indiano, hambúrguer, carnes), com só um italiano." : "O roteiro sugerido foi refeito com o que ela marcou: sem comida baiana nem frutos do mar, sem Feira de São Joaquim, Bonfim e Boteco do França, com 1h30 para a Helena quase todo dia, o jogo do Bahia no domingo, surfe em Stella Maris na sexta e restaurantes variados, com só um italiano.") + " Usar a versão nova? As mudanças feitas neste celular serão substituídas.",
     updNew: "Usar a versão nova", updKeep: "Manter a minha", updDone: "Roteiro novo carregado.", errAirport: "Na sexta é preciso sair para o aeroporto às 21h30.",
     errDay: (n, d) => `${n}: não disponível neste dia. Dias possíveis: ${d}.`, errTime: (n, w) => `${n}: horário possível ${w}.`, errFixed: (n, t) => `${n} começa às ${t}.`, errNone: (n) => `${n} não cabe em nenhum dia da viagem.`,
     to: "a", noDays: "nenhum",
@@ -959,8 +1098,8 @@ const T = {
     sunset: "atardecer 17:31", sunMark: "17:31", tide: "marea baja", sunsetInfo: "Atardecer 17:31", tideInfo: "Marea baja",
     beforeArrival: "Todavía viajando", afterAirport: "Aeropuerto y vuelo",
     hint: "Toca un bloque para ver detalles y enlaces. Mantén presionado medio segundo y arrastra para cambiar la hora, o suéltalo sobre otro día arriba. Jala el borde de abajo para cambiar la duración.",
-    hours: "Horario", cost: "Costo", where: "Dónde", info: "Ver información", map: "Mapa", photos: "Fotos",
-    linkNames: { info: "Ver información", reserva: "Reservar", instagram: "Instagram", baleias: "Ballenas", forte: "Fuerte", sorveteria: "Heladería", "horários": "Horarios", ranking: "Ranking", tour: "Tour", TAMAR: "TAMAR", piscinas: "Piscinas", "como chegar": "Cómo llegar", lojas: "Tiendas", ingressos: "Entradas", cadastro: "Registro facial", agenda: "Agenda", taxa: "Tasa de la isla", lista: "Lista de restaurantes", "avaliações": "Reseñas", "preços": "Precios", "cardápio": "Menú" },
+    hours: "Horario", cost: "Costo", where: "Dónde", info: "Ver información", map: "Mapa", photos: "Fotos", route: "Cómo llegar", lodging: "Dónde nos quedamos", lodgingSub: "Av. Sete de Setembro, 3633, Porto da Barra. Toca para abrir en el mapa.",
+    linkNames: { info: "Ver información", reserva: "Reservar", instagram: "Instagram", baleias: "Ballenas", forte: "Fuerte", sorveteria: "Heladería", "horários": "Horarios", ranking: "Ranking", tour: "Tour", TAMAR: "TAMAR", piscinas: "Piscinas", "como chegar": "Cómo llegar", lojas: "Tiendas", ingressos: "Entradas", cadastro: "Registro facial", agenda: "Agenda", taxa: "Tasa de la isla", lista: "Lista de restaurantes", "avaliações": "Reseñas", "preços": "Precios", "cardápio": "Menú", rotaHosp: "Ruta al alojamiento", rotaAero: "Ruta al aeropuerto" },
     dayL: "Día", startL: "Inicio", durL: "Duración", noteL: "Nota", nameL: "Nombre del bloque",
     remove: "Quitar", close: "Cerrar", add: "Agregar al cronograma", fixedBlock: "Bloque fijo del viaje.",
     conflictWith: "Choque de horario con", conflict: "choque", noStart: "No hay horario posible este día.",
@@ -980,7 +1119,7 @@ const T = {
     tagNames: { reserva: "Reservar", dinheiro: "Llevar efectivo", confirmar: "Confirmar horario", uber: "Ir en Uber", roupa: "Ropa clara", cedo: "Llegar temprano", conta: "Revisar la cuenta", br: "Típico de Brasil", ingresso: "Comprar entrada" },
     outOfHours: "fuera de horario", outAlert: "Fuera del horario posible",
     pinnedHint: "El inicio es fijo (aterrizaje a las 15:25). Si el vuelo se retrasa o es internacional, aumenta la duración aquí.",
-    updMsg: (v) => "El itinerario sugerido se rehízo con lo que ella marcó: sin comida bahiana ni mariscos, sin la Feria de São Joaquim, el Bonfim ni el Boteco do França, con un espacio para Helena casi todos los días, el partido del Bahia el domingo y surf en Stella Maris el viernes. ¿Usar la versión nueva? Se reemplazarán los cambios hechos en este celular.",
+    updMsg: (v) => (v >= 5 ? "El itinerario sugerido se ajustó: Helena con 1h30, horarios pensados según el alojamiento en Porto da Barra y Costa Azul, y restaurantes de cocinas variadas (asiática, mexicana, india, hamburguesas, carnes), con un solo italiano." : "El itinerario sugerido se rehízo con lo que ella marcó: sin comida bahiana ni mariscos, sin la Feria de São Joaquim, el Bonfim ni el Boteco do França, con 1h30 para Helena casi todos los días, el partido del Bahia el domingo, surf en Stella Maris el viernes y restaurantes variados, con un solo italiano.") + " ¿Usar la versión nueva? Se reemplazarán los cambios hechos en este celular.",
     updNew: "Usar la versión nueva", updKeep: "Mantener la mía", updDone: "Itinerario nuevo cargado.", errAirport: "El viernes hay que salir al aeropuerto a las 21:30.",
     errDay: (n, d) => `${n}: no disponible este día. Días posibles: ${d}.`, errTime: (n, w) => `${n}: horario posible ${w}.`, errFixed: (n, t) => `${n} empieza a las ${t}.`, errNone: (n) => `${n} no cabe en ningún día del viaje.`,
     to: "a", noDays: "ninguno",
@@ -1021,7 +1160,7 @@ function normalize(p) {
   return out;
 }
 function sig(list) { return list.map((b) => `${b.a}|${b.d}|${b.s}|${b.u}`).sort().join(";"); }
-const OLD_SIGS = [DEFAULT_PLAN_V1, DEFAULT_PLAN_V2, DEFAULT_PLAN_V3, DEFAULT_PLAN_V4].map((l) => sig(l.map(([a, d, s, u]) => ({ a, d, s: h(s), u }))));
+const OLD_SIGS = [DEFAULT_PLAN_V1, DEFAULT_PLAN_V2, DEFAULT_PLAN_V3, DEFAULT_PLAN_V4, DEFAULT_PLAN_V5].map((l) => sig(l.map(([a, d, s, u]) => ({ a, d, s: h(s), u }))));
 let pendingUpdate = false, pendingFrom = 0;
 function loadPlan() {
   const raw = store.get(LS_PLAN), ver = +(store.get(LS_VER) || 0);
@@ -1409,6 +1548,7 @@ function linksFor(a) {
   const out = el("div", { class: "links" });
   (a.links || []).forEach(([k, u], i) => out.append(el("a", { href: u, target: "_blank", rel: "noopener", class: i === 0 ? "main" : "" }, L().linkNames[k] || k)));
   if (a.map) out.append(el("a", { href: gm(a.map), target: "_blank", rel: "noopener" }, L().map));
+  if (a.map) out.append(el("a", { href: "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(a.map), target: "_blank", rel: "noopener" }, L().route));
   if (a.photo) out.append(el("a", { href: gi(a.photo), target: "_blank", rel: "noopener" }, L().photos));
   return out.childNodes.length ? out : null;
 }
@@ -1561,6 +1701,7 @@ function openMenu() {
     body.append(el("h2", null, L().menuTitle));
     const out = el("div"); const m = el("div", { class: "menu" });
     const item = (t, s, fn, cls) => m.append(el("button", { class: cls || "", onclick: fn }, t, el("small", null, s)));
+    item(L().lodging, L().lodgingSub, () => { window.open(gm(LODGING), "_blank", "noopener"); });
     item(L().share, L().shareSub, () => copyText(shareLink(), L().copied, out));
     item(L().summary, L().summarySub, () => copyText(summaryText(), L().copiedSum, out));
     item(L().importT, L().importSub, () => {
