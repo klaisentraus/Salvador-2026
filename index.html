@@ -379,20 +379,9 @@ const ACTS = [
     cost: { pt: "Grátis.", es: "Gratis." },
     links: [["info", "https://www.salvadordabahia.com/experiencias/dique-do-tororo/"]],
     map: "Dique do Tororó Salvador", photo: "Dique do Tororó orixás Salvador" },
-  { id: "feira", cat: "cultura", dur: 90, min: 45, max: 150, win: [W(ALL, "06:00", "17:00")],
-    name: { pt: "Feira de São Joaquim", es: "Feria de São Joaquim" },
-    desc: { pt: "Feira popular enorme na Cidade Baixa: ervas, frutas, cerâmica, cestos e artigos de candomblé. Melhor de manhã.", es: "Feria popular enorme en la Ciudad Baja: hierbas, frutas, cerámica, cestas y artículos de candomblé. Mejor en la mañana." },
-    hours: { pt: "Todos os dias, 5h às 17h. No feriado o movimento pode ser menor.", es: "Todos los días, 5:00 a 17:00. En feriado puede haber menos puestos." },
-    links: [["info", "https://www.salvadordabahia.com/nossas-listas/compras-na-feira-de-sao-joaquim-artesanato-de-barro-cestos-bolsas-de-palha-artigos-religiosos-e-mais/"]],
-    map: "Feira de São Joaquim Salvador", photo: "Feira de São Joaquim Salvador" },
-  { id: "bonfim", cat: "cultura", dur: 60, min: 30, max: 90, win: [W(ALL, "06:30", "18:00")],
-    name: { pt: "Basílica do Bonfim", es: "Basílica del Bonfim" },
-    desc: { pt: "Igreja na Colina Sagrada, famosa pelas fitinhas coloridas amarradas no gradil.", es: "Iglesia en la Colina Sagrada, famosa por las cintas de colores atadas a la reja." },
-    hours: { pt: "Seg a qui e sáb 6h30 às 18h; sex e dom 5h30 às 18h.", es: "Lun a jue y sáb 6:30 a 18:00; vie y dom 5:30 a 18:00." }, cost: { pt: "Grátis.", es: "Gratis." },
-    links: [], map: "Basílica do Senhor do Bonfim Salvador", photo: "Basílica do Senhor do Bonfim fitas" },
   { id: "ribeira", cat: "cultura", dur: 180, min: 120, max: 240, win: [W(ALL, "09:00", "18:00")],
     name: { pt: "Ribeira, sorvete e barco para Plataforma", es: "Ribeira, helado y lancha a Plataforma" },
-    desc: { pt: "Sorveteria da Ribeira (desde 1931, mais de 60 sabores), orla de bairro e o barquinho de 5 a 8 min até Plataforma para almoçar moqueca no Boca de Galinha.", es: "Heladería da Ribeira (desde 1931, más de 60 sabores), costanera de barrio y la lancha de 5 a 8 min hasta Plataforma para almorzar moqueca en Boca de Galinha." },
+    desc: { pt: "Sorveteria da Ribeira (desde 1931, mais de 60 sabores), orla de bairro e o barquinho de 5 a 8 min até Plataforma, do outro lado da enseada.", es: "Heladería da Ribeira (desde 1931, más de 60 sabores), costanera de barrio y la lancha de 5 a 8 min hasta Plataforma, al otro lado de la ensenada." },
     links: [["info", "https://www.salvadordabahia.com/en/routes/quick-tours-ribeira/"], ["sorveteria", "https://www.salvadordabahia.com/en/experiences/sorveteria-da-ribeira-ribeiras-ice-cream/"]],
     map: "Sorveteria da Ribeira Praça General Osório 87 Salvador", photo: "Sorveteria da Ribeira Salvador" },
   { id: "mercado", cat: "cultura", dur: 90, min: 45, max: 120, win: [W([DOM, SEG], "09:00", "14:00"), W([SAB, TER, QUA, QUI, SEX], "09:00", "18:00")],
@@ -546,6 +535,90 @@ const ACTS = [
     cost: { pt: "R$64,90 por pessoa de seg a qui; R$74,90 de sex a dom e feriados (o mesmo em set/2025 e jul/2026).", es: "R$64,90 por persona de lun a jue; R$74,90 de vie a dom y festivos (lo mismo en sep/2025 y jul/2026)." },
     links: [["info", "https://shoppingbarra.com/loja/oliva/"], ["instagram", "https://www.instagram.com/olivagourmet/"]],
     map: "Oliva Gourmet Shopping Barra Salvador", photo: "Oliva Gourmet rodízio pizza Salvador" },
+  // Fontes: shoppingbarra.com/loja/mamma-jamma (piso e telefone, acessado 07/10/2026); horário na ficha do Google (Wanderlog, acessado 07/10/2026); Bahia Notícias, 10/10/2025 e 30/04/2026 (restaurantes do L4 abertos a partir das 12h nos feriados); preços da unidade do Rio, Time Out, 18/01/2026
+  { id: "mammajamma", cat: "comida", dur: 75, min: 45, max: 150, win: [W([DOM, SEG, TER, QUA, QUI], "11:30", "22:30"), W([SEX, SAB], "11:30", "24:00")],
+    name: { pt: "Mamma Jamma (pizza e massa)", es: "Mamma Jamma (pizza y pasta)" },
+    desc: { pt: "Pizzaria e cantina italiana no Shopping Barra, piso L4 Leste. Boa para a primeira noite: casual e perto. Telefone (71) 3035-4499. Participa da Restaurant Week.", es: "Pizzería y cantina italiana en el Shopping Barra, piso L4 Leste. Buena para la primera noche: casual y cerca. Teléfono +55 71 3035-4499. Participa en la Restaurant Week." },
+    hours: { pt: "Dom a qui 11h30 às 22h30; sex e sáb até 24h (ficha do Google). Nos feriados de 2025 e 2026, os restaurantes do L4 abriram a partir das 12h.", es: "Dom a jue 11:30 a 22:30; vie y sáb hasta 24:00 (ficha de Google). En los festivos de 2025 y 2026, los restaurantes del L4 abrieron desde las 12:00." },
+    cost: { pt: "Massas e pizzas por cerca de R$75 (unidade do Rio, jan/2026).", es: "Pastas y pizzas por unos R$75 (sede de Río, ene/2026)." },
+    links: [["info", "https://shoppingbarra.com/loja/mamma-jamma/"]],
+    map: "Mamma Jamma Shopping Barra Salvador", photo: "Mamma Jamma Shopping Barra pizza" },
+  // Fontes: ficha do Google (Wanderlog, acessado 07/10/2026); salvadordabahia.com (sem data); Bahia Notícias, 16/03/2026 (evento na casa)
+  { id: "pereira", cat: "comida", dur: 90, min: 60, max: 150, win: [W([SAB, TER, QUA, QUI, SEX], "12:00", "23:30"), W([DOM], "12:00", "23:00")],
+    dayMsg: { 2: { pt: "Segunda: não confirmei se o Pereira abre.", es: "Lunes: no confirmé si Pereira abre." } },
+    name: { pt: "Pereira (Porto da Barra)", es: "Pereira (Porto da Barra)" },
+    desc: { pt: "Restaurante com vista do mar no Porto da Barra, com carnes no cardápio, como tornedor ao poivre vert, filé mignon e minihambúrgueres. Telefone (71) 3264-6464. Participa da Restaurant Week.", es: "Restaurante con vista al mar en Porto da Barra, con carnes en la carta, como tornedó a la pimienta verde, filete y mini hamburguesas. Teléfono +55 71 3264-6464. Participa en la Restaurant Week." },
+    hours: { pt: "Ter a sáb 12h às 23h30; dom 12h às 23h (ficha do Google). Segunda não confirmada.", es: "Mar a sáb 12:00 a 23:30; dom 12:00 a 23:00 (ficha de Google). Lunes no confirmado." },
+    cost: { pt: "Preço não confirmado.", es: "Precio no confirmado." },
+    links: [["instagram", "https://www.instagram.com/pereira_restaurante/"], ["info", "https://www.salvadordabahia.com/?p=18687"]],
+    map: "Pereira Restaurante Avenida Sete de Setembro 3959 Barra Salvador", photo: "Pereira restaurante Porto da Barra" },
+  // Fontes: Correio, 28/09/2024 (novo cardápio); ficha do Google (Wanderlog, acessado 07/10/2026); Bahia Social Vip, 06/10/2026 (menus da Restaurant Week, que não valem em feriado)
+  { id: "carvao", cat: "comida", dur: 90, min: 60, max: 150, win: [W([SAB, SEG, TER, QUA, QUI, SEX], "12:00", "16:00"), W([SAB, SEG, TER, QUA, QUI, SEX], "18:00", "22:30"), W([DOM], "12:00", "16:00")],
+    name: { pt: "Carvão (carnes na brasa)", es: "Carvão (carnes a la brasa)" },
+    desc: { pt: "Carnes na brasa no Chame-Chame, ao lado da Barra. Na Restaurant Week, o almoço sai R$99 (prato de flat iron, cupim ou carne de sol) e o jantar R$119, de segunda a sábado, menos em feriado. Reservas: (71) 99632-8682.", es: "Carnes a la brasa en Chame-Chame, al lado de Barra. En la Restaurant Week, el almuerzo cuesta R$99 (plato de flat iron, cupim, que es la giba de la res, o carne de sol) y la cena R$119, de lunes a sábado, menos en festivos. Reservas: +55 71 99632-8682." },
+    hours: { pt: "Seg a sáb 12h às 16h e 18h às 22h30; dom 12h às 16h.", es: "Lun a sáb 12:00 a 16:00 y 18:00 a 22:30; dom 12:00 a 16:00." },
+    cost: { pt: "Menu da Restaurant Week: almoço R$99, jantar R$119. À la carte não confirmado.", es: "Menú de la Restaurant Week: almuerzo R$99, cena R$119. A la carta no confirmado." },
+    links: [["instagram", "https://www.instagram.com/restaurantecarvao/"], ["info", "https://bahiasocialvip.com.br/2026/10/carvao-leva-fogo-e-brasa-para-restaurant-week/"]],
+    map: "Restaurante Carvão Rua Professor Sabino Silva 5 Chame-Chame Salvador", photo: "Restaurante Carvão Salvador brasa" },
+  // Fontes: cardápio de jul/2026 (pastaemcasa.com.br); getin.app (horários, acessado 07/10/2026); Doris Pinheiro, 03/10/2026 (menus da Restaurant Week); TripAdvisor, avaliações até set/2026
+  { id: "pastaemcasa", cat: "comida", dur: 90, min: 60, max: 150, win: [W([SEG, TER, QUA, QUI], "12:00", "15:30"), W([SEX, SAB, DOM], "12:00", "17:00"), W([TER, QUA, QUI, SEX, SAB, DOM], "19:00", "23:30")],
+    timeMsg: { pt: "Almoço todos os dias; jantar de terça a domingo, a partir das 19h.", es: "Almuerzo todos los días; cena de martes a domingo, desde las 19:00." },
+    name: { pt: "Pasta em Casa (italiano)", es: "Pasta em Casa (italiano)" },
+    desc: { pt: "Cantina italiana no Rio Vermelho: 12 dos 19 pratos principais não levam frutos do mar. Na Restaurant Week tem rigatoni, filé à parmegiana e medalhão (almoço R$99, jantar R$119). Reserva pelo app Get In ou (71) 3334-7232.", es: "Cantina italiana en Rio Vermelho: 12 de los 19 platos fuertes no llevan mariscos. En la Restaurant Week hay rigatoni, filete a la parmesana y medallón (almuerzo R$99, cena R$119). Reserva por la app Get In o +55 71 3334-7232." },
+    hours: { pt: "Almoço todos os dias, até 15h30 de seg a qui e até 17h de sex a dom. Jantar de ter a dom, 19h às 23h30. Sem jantar na segunda.", es: "Almuerzo todos los días, hasta 15:30 de lun a jue y hasta 17:00 de vie a dom. Cena de mar a dom, 19:00 a 23:30. Sin cena el lunes." },
+    cost: { pt: "Pratos de R$65 a 139 (cardápio de jul/2026).", es: "Platos de R$65 a 139 (carta de jul/2026)." },
+    links: [["reserva", "https://www.getin.app/salvador/pasta-em-casa-rio-vermelho"], ["cardápio", "http://pastaemcasa.com.br/wp-content/uploads/2026/07/CARDAPIOS_COMIDAS_JUL26.pdf"]],
+    map: "Pasta em Casa Rua Professora Almerinda Dultra 67 Rio Vermelho Salvador", photo: "Pasta em Casa Rio Vermelho" },
+  // Fontes: Correio, 26/04/2025 (abertura) e 05/08/2026 (telefone); Revista Yacht, 02/10/2026 (menus da Restaurant Week)
+  { id: "chalabi", cat: "comida", dur: 90, min: 60, max: 150, win: [W([SAB, DOM, TER, QUA, QUI, SEX], "11:30", "22:00")],
+    dayMsg: { 2: { pt: "A Casa Chálabi fecha às segundas.", es: "Casa Chálabi cierra los lunes." } },
+    name: { pt: "Casa Chálabi (libanesa)", es: "Casa Chálabi (libanesa)" },
+    desc: { pt: "Cozinha libanesa e mediterrânea no terraço do Pasta em Casa, no Rio Vermelho. Na Restaurant Week: frango ao molho de iogurte, pide, kafta ou berinjela crocante (almoço R$73,90, jantar R$94,90). Telefone (71) 3937-3272.", es: "Cocina libanesa y mediterránea en la terraza de Pasta em Casa, en Rio Vermelho. En la Restaurant Week: pollo en salsa de yogur, pide, kafta o berenjena crocante (almuerzo R$73,90, cena R$94,90). Teléfono +55 71 3937-3272." },
+    hours: { pt: "Ter a dom, 11h30 às 22h. Fecha às segundas.", es: "Mar a dom, 11:30 a 22:00. Cierra los lunes." },
+    cost: { pt: "Menu da Restaurant Week: almoço R$73,90, jantar R$94,90 (out/2026).", es: "Menú de la Restaurant Week: almuerzo R$73,90, cena R$94,90 (oct/2026)." },
+    links: [["info", "https://www.revistayacht.com.br/casa-chalabi-participa-da-28a-edicao-do-salvador-restaurant-week/"], ["instagram", "https://www.instagram.com/casachalabi/"]],
+    map: "Casa Chálabi Rio Vermelho Salvador", photo: "Casa Chálabi Rio Vermelho" },
+  // Fontes: ficha do Google (Wanderlog, acessado 07/10/2026); cardápio no 99Food (acessado 07/10/2026)
+  { id: "pasargada", cat: "comida", dur: 75, min: 45, max: 150, win: [W([SEG, TER, QUI, DOM], "11:30", "23:30"), W([SEX, SAB], "11:30", "24:00")],
+    dayMsg: { 4: { pt: "O Pasárgada fecha às quartas.", es: "Pasárgada cierra los miércoles." } },
+    name: { pt: "Pasárgada (kebab persa)", es: "Pasárgada (kebab persa)" },
+    desc: { pt: "Kebabs persas e falafel na praça do Rio Vermelho. Casual. WhatsApp (71) 99933-3353. Participa da Restaurant Week.", es: "Kebabs persas y falafel en la plaza de Rio Vermelho. Casual. WhatsApp +55 71 99933-3353. Participa en la Restaurant Week." },
+    hours: { pt: "Seg, ter, qui e dom 11h30 às 23h30; sex e sáb até 1h; fecha às quartas (ficha do Google).", es: "Lun, mar, jue y dom 11:30 a 23:30; vie y sáb hasta la 1:00; cierra los miércoles (ficha de Google)." },
+    cost: { pt: "Combos de kebab de R$69,90 a 79,90; pratos para dois de R$131,90 a 151,90 (cardápio de delivery, out/2026).", es: "Combos de kebab de R$69,90 a 79,90; platos para dos de R$131,90 a 151,90 (carta de domicilio, oct/2026)." },
+    links: [["instagram", "https://www.instagram.com/vouprapasargada/"], ["cardápio", "https://99app.com/99food/salvador/pasargada-kebab-grill-bar/5764612246194620423/"]],
+    map: "Pasárgada Kebab Grill Praça Brigadeiro Faria Rocha Rio Vermelho Salvador", photo: "Pasárgada Kebab Grill Salvador" },
+  // Fontes: Correio, 25/04/2026 (reabertura); fichas do Google e da Pearl (acessadas 07/10/2026; divergem na terça)
+  { id: "alfredoro", cat: "comida", dur: 90, min: 60, max: 150, win: [W([SEG, TER, QUA, QUI, SEX, SAB], "19:00", "23:00"), W([DOM], "12:00", "16:00"), W([DOM], "19:00", "22:00")],
+    name: { pt: "Alfredo'Ro (italiano)", es: "Alfredo'Ro (italiano)" },
+    desc: { pt: "Italiano tradicional de Ondina, reaberto em abril de 2026 depois de uma reforma. Nota 4,7 no Google. Ligar antes: (71) 3025-0477. Participa da Restaurant Week.", es: "Italiano tradicional de Ondina, reabierto en abril de 2026 después de una remodelación. Nota 4,7 en Google. Llamar antes: +55 71 3025-0477. Participa en la Restaurant Week." },
+    hours: { pt: "Segunda, jantar a partir das 19h; domingo 12h às 16h e 19h às 22h. Os outros dias não estão confirmados: ligar.", es: "Lunes, cena desde las 19:00; domingo 12:00 a 16:00 y 19:00 a 22:00. Los otros días no están confirmados: llamar." },
+    cost: { pt: "Preço não confirmado.", es: "Precio no confirmado." },
+    links: [["info", "https://www.correio24horas.com.br/so-se-ve-no-correio/tradicional-em-salvador-alfredoro-reinaugura-em-ondina-apos-reforma-0426"]],
+    map: "Alfredo'Ro Restaurante Italiano Ondina Salvador", photo: "Alfredo'Ro restaurante italiano Salvador" },
+  // Fontes: fasano.com.br/en/gastronomia/gero-salvador (horários, acessado 07/10/2026); cardápio em fasano.com.br; Folha PE, 02/05/2026 (menu executivo não vale em feriado)
+  { id: "gero", cat: "comida", dur: 90, min: 60, max: 150, win: [W([SEG, TER, QUA, QUI], "12:30", "15:00"), W([SEG, TER, QUA, QUI, DOM], "19:00", "23:00"), W([SEX], "12:30", "16:00"), W([SAB, DOM], "12:30", "17:00"), W([SEX, SAB], "19:00", "24:00")],
+    name: { pt: "Gero (italiano do Fasano)", es: "Gero (italiano del Fasano)" },
+    desc: { pt: "Restaurante italiano do Hotel Fasano, na Praça Castro Alves, perto do Pelourinho, com cerca de 20 pratos sem frutos do mar. No feriado não tem menu executivo, só a carta. Reservar: (71) 2201-6300 ou WhatsApp (71) 2201-6383.", es: "Restaurante italiano del Hotel Fasano, en la Praça Castro Alves, cerca del Pelourinho, con unos 20 platos sin mariscos. En festivo no hay menú ejecutivo, solo la carta. Reservar: +55 71 2201-6300 o WhatsApp +55 71 2201-6383." },
+    hours: { pt: "Seg a qui 12h30 às 15h e 19h às 23h; sex 12h30 às 16h e 19h à meia-noite; sáb 12h30 às 17h e 19h à meia-noite; dom 12h30 às 17h e 19h às 23h. Feriado não informado.", es: "Lun a jue 12:30 a 15:00 y 19:00 a 23:00; vie 12:30 a 16:00 y 19:00 a 24:00; sáb 12:30 a 17:00 y 19:00 a 24:00; dom 12:30 a 17:00 y 19:00 a 23:00. Festivo no informado." },
+    cost: { pt: "Massas de R$110 a 142 e sobremesas de R$35 a 50: cerca de R$145 a 190 por pessoa.", es: "Pastas de R$110 a 142 y postres de R$35 a 50: unos R$145 a 190 por persona." },
+    links: [["reserva", "https://fasano.com.br/en/gastronomia/gero-salvador"], ["cardápio", "https://fasano.com.br/wp-content/uploads/2023/10/GERO_SALVADOR_QR_260731-1.pdf"]],
+    map: "Gero Fasano Praça Castro Alves Salvador", photo: "Gero Salvador Fasano restaurante" },
+  // Fontes: getin.app/salvador/loro-stella-maris (horário, acessado 07/10/2026); salvadordabahia.com (endereço, sem data); Melhores Destinos (atualizado em 07/10/2026); cardápio descrito em Viaje Comigo, 21/08/2022
+  { id: "loro", cat: "comida", dur: 75, min: 45, max: 150, win: [W(ALL, "10:00", "18:00")],
+    name: { pt: "Lôro Stella Maris (barraca de praia)", es: "Lôro Stella Maris (kiosco de playa)" },
+    desc: { pt: "Barraca na areia de Stella Maris, com chuveiro, no mesmo endereço da escola de surfe. Em 2022, além de frutos do mar, o cardápio tinha picanha, filé, massas, risoto e saladas. Telefone (71) 2137-5002; reserva pelo app Get In.", es: "Kiosco sobre la arena de Stella Maris, con ducha, en la misma dirección de la escuela de surf. En 2022, además de mariscos, la carta tenía picanha, filete, pastas, risotto y ensaladas. Teléfono +55 71 2137-5002; reserva por la app Get In." },
+    hours: { pt: "Todos os dias, 10h às 18h.", es: "Todos los días, 10:00 a 18:00." },
+    cost: { pt: "Preço não confirmado.", es: "Precio no confirmado." },
+    links: [["reserva", "https://www.getin.app/salvador/loro-stella-maris"], ["info", "https://salvadordabahia.com/?p=18911"]],
+    map: "Lôro Stella Maris Alameda Mar del Plata Salvador", photo: "Barraca do Lôro Stella Maris" },
+  // Fontes: Correio, 26/05/2025 (abertura e horário) e 05/08/2026 (reservas); Bahia Notícias, 09/07/2025 (preço das pizzas); lista da Restaurant Week 2026
+  { id: "almacen", cat: "comida", dur: 60, min: 30, max: 120, win: [W(ALL, "09:00", "22:00")],
+    name: { pt: "Almacen Pepe (empório)", es: "Almacen Pepe (almacén)" },
+    desc: { pt: "Empório e restaurante no Shopping Barra, piso L4 Norte, com pizza, choripán e picanha. Reservas: (71) 98176-0326. Participa da Restaurant Week.", es: "Almacén y restaurante en el Shopping Barra, piso L4 Norte, con pizza, choripán y picanha. Reservas: +55 71 98176-0326. Participa en la Restaurant Week." },
+    hours: { pt: "Todos os dias, 9h às 22h (mai/2025).", es: "Todos los días, 9:00 a 22:00 (may/2025)." },
+    cost: { pt: "Pizzas de R$54,90 a 59,90 (jul/2025).", es: "Pizzas de R$54,90 a 59,90 (jul/2025)." },
+    links: [["instagram", "https://www.instagram.com/almacenpepe/"], ["info", "https://www.correio24horas.com.br/salvador/rede-de-delicatessen-almacen-pepe-inaugura-unidade-em-shopping-de-salvador-0525"]],
+    map: "Almacen Pepe Shopping Barra Salvador", photo: "Almacen Pepe Salvador" },
   // Fontes: boipretoprime.com.br (acessado 02/10/2026); TripAdvisor, avaliações de abr/2025 a jul/2026
   { id: "boipreto", cat: "comida", dur: 120, min: 75, max: 180, win: [W(ALL, "12:00", "17:00"), W(ALL, "18:00", "23:00")],
     name: { pt: "Boi Preto Prime (churrascaria)", es: "Boi Preto Prime (churrasquería)" },
@@ -571,16 +644,6 @@ const ACTS = [
     cost: { pt: "Cerca de R$200 o quilo (avaliação de ago/2025).", es: "Unos R$200 el kilo (reseña de ago/2025)." },
     links: [["info", "https://www.grupomignon.com.br/contato/"], ["avaliações", "https://www.tripadvisor.com.br/Restaurant_Review-g303272-d5383844-Reviews-Mignon_Restaurante-Salvador_State_of_Bahia.html"]],
     map: "Mignon Restaurante Rua Engenheiro Alexandre Maia 3 Graça Salvador", photo: "Mignon restaurante Graça Salvador" },
-  // Fontes: Alô Alô Bahia, 17/08/2025 (café da manhã, R$130) e 06/05/2026 (ainda na lista)
-  { id: "casaria", cat: "comida", dur: 75, min: 45, max: 120, win: [W([SAB, DOM, SEG], "08:00", "11:30")],
-    dayMsg: { all: { pt: "O café da manhã da Casarìa é só sábado, domingo e feriado (12/10).", es: "El desayuno de Casarìa es solo sábado, domingo y festivo (12/10)." } },
-    timeMsg: { pt: "Café da manhã das 8h às 11h30.", es: "Desayuno de 8:00 a 11:30." },
-    name: { pt: "Café da manhã baiano na Casarìa", es: "Desayuno bahiano en Casarìa" },
-    desc: { pt: "Bufê de café da manhã regional da chef Preta, no Palacete Tira-Chapéu, na Rua Chile: cuscuz, tapioca, mingau, aipim e banana-da-terra. Contato (71) 99921-1072.", es: "Bufé de desayuno regional de la chef Preta, en el Palacete Tira-Chapéu, en la Rua Chile: cuscuz de maíz, tapioca (crepe de almidón de yuca), mingau (parecido a una colada), yuca y plátano. Contacto +55 71 99921-1072." },
-    hours: { pt: "Sábado, domingo e feriado, 8h às 11h30.", es: "Sábado, domingo y festivos, 8:00 a 11:30." },
-    cost: { pt: "R$130 por pessoa (ago/2025).", es: "R$130 por persona (ago/2025)." },
-    links: [["info", "https://aloalobahia.com/noticias/2025/08/17/cafe-da-manha-em-salvador-casaria-lanca-experiencia-da-chef-preta-inspirada-em-piqueniques-e-sabores-da-roca/"], ["instagram", "https://www.instagram.com/casaria.ssa/"]],
-    map: "Casarìa Palacete Tira-Chapéu Rua Chile Salvador", photo: "Casarìa café da manhã chef Preta Salvador" },
   // Fontes: perini.com.br, unidade Graça (acessado 02/10/2026); Bahia Econômica, 27/02/2026 (a Graça segue aberta)
   { id: "perini", cat: "comida", dur: 45, min: 20, max: 90, win: [W([SAB, TER, QUA, QUI, SEX], "06:30", "21:00"), W([DOM, SEG], "06:30", "20:00")],
     name: { pt: "Padaria Perini (Graça)", es: "Panadería Perini (Graça)" },
@@ -602,90 +665,24 @@ const ACTS = [
     hours: { pt: "Todos os dias, 8h às 20h (TripAdvisor).", es: "Todos los días, 8:00 a 20:00 (TripAdvisor)." },
     links: [["info", "https://www.bahianoticias.com.br/bnhall/business/827-sorveteria-mais-antiga-da-bahia-a-cubana-reabre-unidade-historica-no-elevador-lacerda"], ["instagram", "https://www.instagram.com/acubanasorvetes/"]],
     map: "Sorveteria A Cubana Elevador Lacerda Salvador", photo: "Sorveteria A Cubana Elevador Lacerda" },
-  // Fonte: TripAdvisor (preço em jul/2024; avaliação de 13/04/2026). Horário não confirmado.
-  { id: "yemanja", cat: "comida", dur: 90, min: 60, max: 150, win: [W(ALL, "11:30", "22:00")],
-    name: { pt: "Restaurante Yemanjá (moqueca)", es: "Restaurante Yemanjá (moqueca)" },
-    desc: { pt: "Clássico da orla para moqueca baiana: peixe ou camarão cozido no leite de coco e no azeite de dendê, servido na panela de barro. Costuma ter fila. Ligar antes: (71) 3461-9010.", es: "Clásico de la costanera para la moqueca bahiana: pescado o camarón cocido en leche de coco y aceite de dendê (de palma), servido en olla de barro. Se parece al encocado, pero con dendê. Suele haber fila. Llamar antes: +55 71 3461-9010." },
-    hours: { pt: "Horário não confirmado: ligar antes.", es: "Horario no confirmado: llamar antes." },
-    cost: { pt: "Cerca de R$85 por pessoa (avaliação de jul/2024).", es: "Unos R$85 por persona (reseña de jul/2024)." },
-    links: [["avaliações", "https://www.tripadvisor.com/Restaurant_Review-g303272-d5568732-Reviews-Restaurante_Yemanja-Salvador_State_of_Bahia.html"]],
-    map: "Restaurante Yemanjá Avenida Octávio Mangabeira 3900 Salvador", photo: "Restaurante Yemanjá moqueca Salvador" },
-  // Fonte: TripAdvisor (horário; avaliações de jan, mar e jul/2026)
-  { id: "donana", cat: "comida", dur: 90, min: 60, max: 150, win: [W([SEG, TER, QUA, QUI], "11:30", "16:00"), W([SEX, SAB], "11:30", "21:30"), W([DOM], "11:30", "17:00")],
-    name: { pt: "Donana (Rio Vermelho)", es: "Donana (Rio Vermelho)" },
-    desc: { pt: "Comida baiana farta e sem frescura, filial do Donana de Brotas. Nas avaliações, uma moqueca de camarão serve três pessoas. Telefone (71) 2132-3363.", es: "Comida bahiana abundante y sencilla, sucursal del Donana de Brotas. Según las reseñas, una moqueca de camarón alcanza para tres. Teléfono +55 71 2132-3363." },
-    hours: { pt: "Seg a qui 11h30 às 16h; sex e sáb até 21h30; dom até 17h (TripAdvisor).", es: "Lun a jue 11:30 a 16:00; vie y sáb hasta 21:30; dom hasta 17:00 (TripAdvisor)." },
-    links: [["avaliações", "https://www.tripadvisor.com/Restaurant_Review-g303272-d27766227-Reviews-Restaurante_Donana_Rio_Vermelho-Salvador_State_of_Bahia.html"]],
-    map: "Restaurante Donana Rua Fonte do Boi 131 Rio Vermelho Salvador", photo: "Restaurante Donana moqueca Salvador" },
-  // Fonte: TripAdvisor, produto da Food & Fun (acessado 02/10/2026: US$65,08, 4 h, nota 5,0 com 173 avaliações)
-  { id: "culinaria", cat: "comida", dur: 240, min: 210, max: 270, win: [W(ALL, "09:00", "21:00")],
-    name: { pt: "Aula de cozinha baiana", es: "Clase de cocina bahiana" },
-    desc: { pt: "Aula prática com a anfitriã Karla (Food & Fun), em Stella Maris: vocês preparam pratos baianos, como a moqueca, com caipirinha à vontade. Dá para fazer em espanhol. Combina com a aula de surfe, que é no mesmo bairro.", es: "Clase práctica con la anfitriona Karla (Food & Fun), en Stella Maris: preparan platos bahianos, como la moqueca, con caipiriñas a voluntad. Se puede hacer en español. Combina con la clase de surf, que es en el mismo barrio." },
-    hours: { pt: "Cerca de 4 horas; horários no calendário de reservas.", es: "Unas 4 horas; horarios en el calendario de reservas." },
-    cost: { pt: "US$65 por pessoa (out/2026).", es: "US$65 por persona (oct/2026)." },
-    links: [["reserva", "https://www.tripadvisor.com/AttractionProductReview-g303272-d28000436-Cooking_class_in_Salvador_fun_hands_on_experience_with_caips-Salvador_State_of_Bah.html"]],
-    map: "Rua Engenheiro Adozindo Magalhães 255 Stella Maris Salvador", photo: "aula de culinária baiana moqueca" },
   // Fontes: restaurantweek.com.br (28ª edição, 01/10 a 01/11, acessado 02/10/2026); Alô Alô Bahia, 01/10/2026 (lista completa); A Tarde, 29/09/2026 (preços)
   { id: "restweek", cat: "comida", dur: 90, min: 60, max: 150, win: [W(ALL, "12:00", "15:30"), W(ALL, "19:00", "23:00")],
     name: { pt: "Menu da Salvador Restaurant Week", es: "Menú de la Salvador Restaurant Week" },
     desc: { pt: "De 1/10 a 1/11, mais de 140 restaurantes servem menu fixo de entrada, prato e sobremesa com preço reduzido. Boa forma de provar lugares caros pagando menos. Ver a lista e reservar.", es: "Del 1/10 al 1/11, más de 140 restaurantes sirven menú fijo de entrada, plato fuerte y postre a precio reducido. Buena forma de probar lugares caros pagando menos. Ver la lista y reservar." },
     cost: { pt: "Almoço R$59,90 a 99; jantar R$74,90 a 119 (set/2026).", es: "Almuerzo R$59,90 a 99; cena R$74,90 a 119 (sep/2026)." },
     links: [["info", "https://eventos.restaurantweek.com.br/salvador"], ["lista", "https://aloalobahia.com/noticias/2026/10/01/salvador-restaurant-week-inicia-nova-edicao-com-mais-de-140-restaurantes-veja-lista-completa"]] },
-  { id: "dinha", cat: "comida", dur: 60, min: 30, max: 120, win: [W([SEG, TER, QUA], "17:00", "22:00"), W([QUI, SEX], "17:00", "24:00"), W([SAB, DOM], "11:00", "22:00")],
-    name: { pt: "Acarajé da Dinha", es: "Acarajé de Dinha" },
-    desc: { pt: "Acarajé no Largo de Santana, no Rio Vermelho, com bares em volta. O acarajé já é uma refeição. Sem reserva: bom para a primeira noite, se o voo atrasar não se perde nada.", es: "Acarajé en el Largo de Santana, en Rio Vermelho, con bares alrededor. El acarajé ya es una comida completa. Sin reserva: bueno para la primera noche, si el vuelo se retrasa no se pierde nada." },
-    hours: { pt: "Seg a qua 17h às 22h; qui e sex 17h à meia-noite; sáb e dom 11h às 22h.", es: "Lun a mié 17:00 a 22:00; jue y vie 17:00 a medianoche; sáb y dom 11:00 a 22:00." },
-    links: [["info", "https://www.salvadordabahia.com/en/routes/map-of-acaraje/"]],
-    map: "Acarajé da Dinha Largo de Santana Rio Vermelho Salvador", photo: "acarajé da Dinha Rio Vermelho" },
-  { id: "cira", cat: "comida", dur: 30, min: 30, max: 60, win: [W(SEG_SEX, "15:00", "22:00"), W([SAB], "14:00", "24:00"), W([DOM], "14:00", "22:30")],
-    name: { pt: "Acarajé da Cira", es: "Acarajé de Cira" },
-    desc: { pt: "Unidade do Largo da Mariquita, no Rio Vermelho. A de Itapuã está fechada temporariamente.", es: "Local del Largo da Mariquita, en Rio Vermelho. El de Itapuã está cerrado temporalmente." },
-    links: [["info", "https://aloalobahia.com/noticias/2026/05/21/tradicional-acaraje-da-cira-reduz-operacao-em-salvador-saiba-mais/"]],
-    map: "Acarajé da Cira Largo da Mariquita Rio Vermelho Salvador", photo: "acarajé da Cira Rio Vermelho" },
-  { id: "tereza", cat: "comida", dur: 120, min: 60, max: 180, win: [W([SEG, TER, QUA], "12:00", "23:00"), W([QUI, SEX, SAB], "12:00", "24:00"), W([DOM], "12:00", "22:00")],
-    name: { pt: "Casa de Tereza", es: "Casa de Tereza" },
-    desc: { pt: "Cozinha baiana da chef Tereza Paim, no Rio Vermelho. Reserva pelo site ou WhatsApp.", es: "Cocina bahiana de la chef Tereza Paim, en Rio Vermelho. Reserva por la web o WhatsApp." },
-    links: [["info", "https://casadetereza.com.br/sobre/"]],
-    map: "Casa de Tereza Rua Odilon Santos 45 Rio Vermelho Salvador", photo: "Casa de Tereza restaurante moqueca" },
-  { id: "mariquita", cat: "comida", dur: 90, min: 60, max: 150, win: [W(ALL, "12:00", "17:00")],
-    timeMsg: { pt: "A Dona Mariquita abre só para almoço, 12h às 17h.", es: "Dona Mariquita abre solo para almuerzo, 12:00 a 17:00." },
-    name: { pt: "Dona Mariquita", es: "Dona Mariquita" },
-    desc: { pt: "Cozinha patrimonial da Bahia no Rio Vermelho, 44º no ranking Exame 2026. Só almoço.", es: "Cocina patrimonial de Bahía en Rio Vermelho, puesto 44 en el ranking Exame 2026. Solo almuerzo." },
-    links: [["info", "https://aloalobahia.com/gastronomia/2025/11/18/dona-mariquita-completa-20-anos-com-reabertura-da-unidade-do-rio-vermelho-nesta-terca-18-apos-reformas-veja-fotos/"]],
-    map: "Dona Mariquita Rua do Meio 178 Rio Vermelho Salvador", photo: "Dona Mariquita restaurante Salvador" },
-  { id: "amado", cat: "comida", dur: 120, min: 60, max: 180, win: [W([SAB, SEG, TER, QUA, QUI, SEX], "12:00", "23:00"), W([DOM], "12:00", "17:00")],
-    name: { pt: "Amado", es: "Amado" },
-    desc: { pt: "Cozinha brasileira costeira do chef Edinho Engel, à beira da baía no Comércio.", es: "Cocina brasileña costera del chef Edinho Engel, a orillas de la bahía en el Comércio." },
-    links: [["info", "https://pelourinhodiaenoite.salvador.ba.gov.br/restaurante-amado/"]],
-    map: "Restaurante Amado Avenida Lafayete Coutinho 660 Salvador", photo: "restaurante Amado Salvador" },
-  { id: "senac", cat: "comida", dur: 75, min: 45, max: 120, win: [W(ALL, "11:30", "15:30")],
-    name: { pt: "Restaurante-Escola Senac", es: "Restaurante Escuela Senac" },
-    desc: { pt: "Buffet com cerca de 40 pratos baianos e 12 sobremesas, no Largo do Pelourinho.", es: "Bufé con unos 40 platos bahianos y 12 postres, en el Largo do Pelourinho." },
-    links: [["info", "https://pelourinhodiaenoite.salvador.ba.gov.br/restaurante-escola-senac/"]],
-    map: "Restaurante Escola Senac Largo do Pelourinho Salvador", photo: "Restaurante Escola Senac Pelourinho" },
   { id: "poro", cat: "comida", dur: 90, min: 60, max: 150, win: [W(TER_DOM, "12:00", "16:00"), W(TER_DOM, "19:00", "23:00")],
     name: { pt: "Poró", es: "Poró" },
-    desc: { pt: "Restaurante com vista da baía no Santo Antônio Além do Carmo.", es: "Restaurante con vista a la bahía en Santo Antônio Além do Carmo." },
-    hours: { pt: "Ter a dom, 12h às 16h e 19h às 23h.", es: "Mar a dom, 12:00 a 16:00 y 19:00 a 23:00." },
+    desc: { pt: "Restaurante com vista da baía no Santo Antônio Além do Carmo. Tem carnes, como costela e filé mignon ao molho de tamarindo, além de pratos com frutos do mar. WhatsApp (71) 99618-1704.", es: "Restaurante con vista a la bahía en Santo Antônio Além do Carmo. Tiene carnes, como costilla y filete en salsa de tamarindo, además de platos con mariscos. WhatsApp +55 71 99618-1704." },
+    hours: { pt: "As fontes divergem; o TripAdvisor indica ter a sáb 12h às 23h e dom 12h às 18h, fechado na segunda. Confirmar.", es: "Las fuentes no coinciden; TripAdvisor indica mar a sáb 12:00 a 23:00 y dom 12:00 a 18:00, cerrado el lunes. Confirmar." },
     links: [["info", "https://www.salvadordabahia.com/en/routes/06-restaurants-in-santo-antonio-alem-do-carmo/"]],
     map: "Restaurante Poró Santo Antônio Além do Carmo Salvador", photo: "Poró restaurante Santo Antônio Salvador" },
-  { id: "ori", cat: "comida", dur: 150, min: 60, max: 210, win: [W(TER_DOM, "12:00", "23:00")],
-    dayMsg: { 2: { pt: "O Orí Rooftop fecha às segundas.", es: "Orí Rooftop cierra los lunes." } },
-    name: { pt: "Orí Rooftop", es: "Orí Rooftop" },
-    desc: { pt: "Terraço na Rua Chile com vista da baía e do Elevador Lacerda, do Grupo Origem. Bom para o pôr do sol. Reserva pelo Instagram.", es: "Terraza en la Rua Chile con vista a la bahía y al Elevador Lacerda, del Grupo Origem. Buena para el atardecer. Reserva por Instagram." },
-    hours: { pt: "Ter a dom, 12h às 23h.", es: "Mar a dom, 12:00 a 23:00." },
-    links: [["info", "https://www.salvadordabahia.com/experiencias/restaurante-ori-rooftop/"], ["instagram", "https://www.instagram.com/orirooftop/"]],
-    map: "Orí Rooftop Rua Chile Salvador", photo: "Orí Rooftop Salvador" },
-  { id: "peixevoador", cat: "comida", dur: 90, min: 60, max: 180, win: [W(ALL, "12:00", "23:00")],
-    name: { pt: "Peixe Voador", es: "Peixe Voador" },
-    desc: { pt: "Terraço da chef Preta na Rua Chile, com vista da baía, 30 lugares, só com reserva: (71) 99282-3758.", es: "Terraza de la chef Preta en la Rua Chile, con vista a la bahía, 30 lugares, solo con reserva: (71) 99282-3758." },
-    hours: { pt: "Horário não publicado: confirmar na reserva.", es: "Horario no publicado: confirmar al reservar." },
-    links: [["info", "https://aloalobahia.com/noticias/2025/09/04/peixe-voador-chef-preta-inaugura-restaurante-em-terraco-na-rua-chile/"]],
-    map: "Rua Chile 29 Salvador", photo: "Peixe Voador chef Preta Rua Chile" },
-  { id: "pala7", cat: "comida", dur: 120, min: 60, max: 180, win: [W(ALL, "12:00", "23:00")],
-    name: { pt: "Pala7 Rooftop", es: "Pala7 Rooftop" },
-    desc: { pt: "Cozinha italiana com toques baianos de Claude Troisgros, no Palacete Tira-Chapéu, Rua Chile. Reserva: (71) 99219-7540.", es: "Cocina italiana con toques bahianos de Claude Troisgros, en el Palacete Tira-Chapéu, Rua Chile. Reserva: (71) 99219-7540." },
-    hours: { pt: "Horário não publicado: confirmar na reserva.", es: "Horario no publicado: confirmar al reservar." },
+  // Fontes: Correio, 25/07/2026 (cardápio de grelhados); Portal IN, 04/10/2024 (horário de 2024)
+  { id: "pala7", cat: "comida", dur: 120, min: 60, max: 180, win: [W([TER, QUA, QUI], "16:00", "23:00"), W([SEX, SAB, DOM], "13:00", "23:00")],
+    dayMsg: { 2: { pt: "Em 2024 o Pala7 não abria na segunda.", es: "En 2024 el Pala7 no abría los lunes." } },
+    name: { pt: "Pala7 (grelhados no terraço)", es: "Pala7 (parrilla en la terraza)" },
+    desc: { pt: "Terraço do Palacete Tira-Chapéu, na Rua Chile. Em julho de 2026 o cardápio passou a ser de grelhados de Claude Troisgros e Zezito Ornelas: fraldinha, ancho, picanha e filé mignon. Reserva: (71) 99219-7540.", es: "Terraza del Palacete Tira-Chapéu, en la Rua Chile. En julio de 2026 la carta pasó a ser de parrilla de Claude Troisgros y Zezito Ornelas: fraldinha, ancho, picanha y filete. Reserva: +55 71 99219-7540." },
+    hours: { pt: "Em 2024: ter a qui 16h às 23h, sex a dom 13h às 23h, sem segunda. Horário atual não confirmado.", es: "En 2024: mar a jue 16:00 a 23:00, vie a dom 13:00 a 23:00, sin lunes. Horario actual no confirmado." },
     links: [["info", "https://pelourinhodiaenoite.salvador.ba.gov.br/pala7-rooftop/"]],
     map: "Pala7 Rooftop Rua Chile Salvador", photo: "Pala7 Rooftop Salvador" },
   { id: "arento", cat: "comida", dur: 120, min: 60, max: 180, win: [W(ALL, "12:00", "23:00")],
@@ -701,32 +698,6 @@ const ACTS = [
     hours: { pt: "Seg a sáb 11h30 às 23h; domingo e feriado 11h30 às 17h.", es: "Lun a sáb 11:30 a 23:00; domingo y feriado 11:30 a 17:00." },
     links: [["info", "https://revistahoteis.com.br/mistura-contorno-reabre-em-salvador-ba/"]],
     map: "Mistura Contorno Salvador", photo: "Mistura Contorno Salvador vista" },
-  { id: "boia", cat: "comida", dur: 120, min: 60, max: 180, win: [W([SAB, TER, QUA, QUI, SEX], "12:00", "16:00"), W([SAB, TER, QUA, QUI, SEX], "18:30", "23:00"), W([DOM], "12:00", "16:00")],
-    dayMsg: { 2: { pt: "O Boia fecha às segundas.", es: "Boia cierra los lunes." } },
-    name: { pt: "Boia", es: "Boia" },
-    desc: { pt: "Frutos do mar no Horto Florestal, 10º no ranking Exame 2026.", es: "Mariscos en el Horto Florestal, puesto 10 en el ranking Exame 2026." },
-    hours: { pt: "Ter a sáb 12h às 16h e 18h30 às 23h; dom 12h às 16h.", es: "Mar a sáb 12:00 a 16:00 y 18:30 a 23:00; dom 12:00 a 16:00." },
-    cost: { pt: "Cerca de R$98 por prato (Exame 2026).", es: "Unos R$98 por plato (Exame 2026)." },
-    links: [["instagram", "https://www.instagram.com/boiarestaurante/"]],
-    map: "Restaurante Boia Rua José Avena 01 Horto Florestal Salvador", photo: "restaurante Boia Salvador" },
-  { id: "boteco", cat: "comida", dur: 120, min: 60, max: 180, win: [W(ALL, "12:00", "24:00")],
-    name: { pt: "Boteco do França", es: "Boteco do França" },
-    desc: { pt: "Boteco de frutos do mar no Rio Vermelho, conhecido pelo arroz de polvo. Aberto até tarde.", es: "Bar de mariscos en Rio Vermelho, conocido por el arroz con pulpo. Abierto hasta tarde." },
-    links: [["info", "https://www.botecodofranca.com.br/home"]],
-    map: "Boteco do França Rua Borges dos Reis 24 Rio Vermelho Salvador", photo: "Boteco do França arroz de polvo" },
-  { id: "origem", cat: "comida", dur: 150, min: 120, max: 180, win: [W([SAB, TER, QUA, QUI, SEX], "19:00", "23:00")],
-    timeMsg: { pt: "O Origem abre só para jantar, ter a sáb, 19h às 23h.", es: "Origem abre solo para cenar, mar a sáb, 19:00 a 23:00." },
-    name: { pt: "Origem (degustação)", es: "Origem (degustación)" },
-    desc: { pt: "Menu degustação de cozinha baiana autoral, 4º no ranking Exame 2026. Reserva obrigatória.", es: "Menú degustación de cocina bahiana de autor, puesto 4 en el ranking Exame 2026. Reserva obligatoria." },
-    cost: { pt: "R$420 por pessoa, sem bebidas.", es: "R$420 por persona, sin bebidas." },
-    links: [["info", "https://www.grupoorigem.com.br/"]],
-    map: "Restaurante Origem Alameda das Algarobas 74 Salvador", photo: "restaurante Origem Salvador" },
-  { id: "manga", cat: "comida", dur: 150, min: 120, max: 180, win: [W([TER, QUA, QUI, SEX], "19:00", "22:30"), W([SAB], "12:30", "15:00"), W([SAB], "19:00", "22:30")],
-    name: { pt: "Manga (degustação)", es: "Manga (degustación)" },
-    desc: { pt: "Degustação de 9 etapas com foco em frutos do mar, no Rio Vermelho, 13º no ranking Exame 2026.", es: "Degustación de 9 pasos con foco en mariscos, en Rio Vermelho, puesto 13 en el ranking Exame 2026." },
-    cost: { pt: "Cerca de R$395 por pessoa (preço de 2025), sem bebidas.", es: "Unos R$395 por persona (precio de 2025), sin bebidas." },
-    links: [["instagram", "https://www.instagram.com/mangarestaurante/"], ["ranking", "https://exame.com/casual/os-melhores-restaurantes-de-salvador-em-2026-segundo-a-casual-exame/"]],
-    map: "Restaurante Manga Rua Professora Almerinda Dultra 40 Salvador", photo: "restaurante Manga Salvador" },
   { id: "jantar", cat: "comida", dur: 90, min: 45, max: 180, win: [W(ALL, "18:00", "24:00")],
     name: { pt: "Jantar perto do hotel", es: "Cena cerca del hotel" },
     desc: { pt: "Jantar sem reserva perto de onde estiverem.", es: "Cena sin reserva cerca de donde estén." },
@@ -798,9 +769,20 @@ const ACTS = [
     links: [] },
 ];
 
-// Roteiro padrão, versão 4 (sem museus nem terreiro; cachaça no domingo, rodízio de pizza na quinta, praia na sexta)
-const PLAN_VER = 4;
+// Roteiro padrão, versão 5 (com o que ela marcou: sem comida baiana nem frutos do mar, Helena quase todo dia, jogo no domingo, surfe na sexta)
+const PLAN_VER = 5;
 const DEFAULT_PLAN = [
+  ["chegada", SAB, "15:25", 125], ["helena", SAB, "18:00", 120], ["mammajamma", SAB, "20:15", 75],
+  ["farol", DOM, "09:00", 75], ["helena", DOM, "10:30", 120], ["pereira", DOM, "12:45", 75], ["ribeira", DOM, "14:30", 150], ["humaita", DOM, "17:00", 45], ["futebol", DOM, "18:30", 210],
+  ["helena", SEG, "09:00", 120], ["mercado", SEG, "11:15", 75], ["pelourinho", SEG, "12:30", 60], ["gero", SEG, "13:45", 75], ["santoantonio", SEG, "15:15", 150], ["alfredoro", SEG, "19:30", 90],
+  ["mergulho", TER, "08:30", 120], ["portobarra", TER, "10:45", 105], ["carvao", TER, "12:45", 75], ["solar", TER, "16:00", 105], ["helena", TER, "18:15", 120], ["pastaemcasa", TER, "20:30", 90],
+  ["praiadoforte", QUA, "07:00", 480], ["chalabi", QUA, "19:30", 90],
+  ["escuna", QUI, "09:00", 390], ["volpi", QUI, "19:30", 90],
+  ["helena", SEX, "09:00", 120], ["surf", SEX, "12:00", 90], ["loro", SEX, "13:30", 75], ["stella", SEX, "14:45", 105], ["pasargada", SEX, "19:00", 90], ["aeroporto", SEX, "21:30", 70],
+];
+
+// Roteiro padrão da versão 4 (usado só para reconhecer celulares que não mudaram nada)
+const DEFAULT_PLAN_V4 = [
   ["chegada", SAB, "15:25", 125], ["dinha", SAB, "19:30", 75],
   ["farol", DOM, "09:00", 75], ["pelourinho", DOM, "10:30", 90], ["cravinho", DOM, "12:00", 60], ["poro", DOM, "13:30", 90], ["santoantonio", DOM, "15:00", 120], ["ori", DOM, "17:00", 150],
   ["feira", SEG, "08:30", 90], ["bonfim", SEG, "10:30", 60], ["ribeira", SEG, "12:00", 180], ["humaita", SEG, "16:45", 75], ["tereza", SEG, "19:30", 90],
@@ -872,9 +854,7 @@ X("abaete", "Itapuã", "Itapuã", "Lagoa escura entre dunas brancas", "Laguna os
 X("stella", "Stella Maris, perto do aeroporto", "Stella Maris, cerca del aeropuerto", "Praias de mar aberto com barracas", "Playas de mar abierto con kioscos", "Grátis", "Gratis");
 X("pelourinho", "Pelourinho", "Pelourinho", "Largos, casario e a Igreja da Ordem Terceira", "Plazas, casonas y la Iglesia de la Orden Tercera", "Igreja R$10", "Iglesia R$10");
 X("santoantonio", "Santo Antônio Além do Carmo", "Santo Antônio Além do Carmo", "Bairro de casario, fotografia e vista da baía", "Barrio de casonas, fotografía y vista a la bahía", "Grátis", "Gratis");
-X("feira", "Calçada (Cidade Baixa)", "Calçada (Ciudad Baja)", "Feira popular de ervas, cerâmica e frutas", "Feria popular de hierbas, cerámica y frutas", "Grátis", "Gratis", ["br", "dinheiro"]);
-X("bonfim", "Colina do Bonfim", "Colina del Bonfim", "Igreja das fitinhas coloridas", "Iglesia de las cintas de colores", "Grátis", "Gratis", ["br"]);
-X("ribeira", "Ribeira e Plataforma", "Ribeira y Plataforma", "Sorvete de 1931, barquinho e moqueca", "Helado de 1931, lancha y moqueca");
+X("ribeira", "Ribeira e Plataforma", "Ribeira y Plataforma", "Sorvete de 1931, orla e barquinho", "Helado de 1931, costanera y lancha");
 X("mercado", "Comércio", "Comércio", "Artesanato e o elevador para a Cidade Alta", "Artesanías y el ascensor a la Ciudad Alta", "Elevador grátis", "Ascensor gratis");
 X("solar", "Av. Contorno", "Av. Contorno", "Pôr do sol, prainha e moqueca na baía", "Atardecer, playita y moqueca en la bahía", "Grátis", "Gratis", ["uber"]);
 X("oxumare", "Federação", "Federação", "Terreiro de candomblé aberto a visitas", "Terreiro de candomblé abierto a visitas", "Grátis", "Gratis", ["roupa"]);
@@ -892,22 +872,10 @@ X("doisdejulho", "Dois de Julho", "Dois de Julho", "Botecos populares do bairro"
 X("cruzpascoal", "Santo Antônio Além do Carmo", "Santo Antônio Além do Carmo", "Bar de 1952 com vista da baía", "Bar de 1952 con vista a la bahía");
 X("jam", "Solar do Unhão (Av. Contorno)", "Solar do Unhão (Av. Contorno)", "Jazz ao ar livre à beira da baía", "Jazz al aire libre junto a la bahía", "", "", ["confirmar"]);
 X("fasano", "Praça Castro Alves", "Praça Castro Alves", "Música ao vivo no terraço do hotel", "Música en vivo en la terraza del hotel", "Preço não publicado", "Precio no publicado", ["reserva"]);
-X("dinha", "Rio Vermelho (Largo de Santana)", "Rio Vermelho (Largo de Santana)", "Acarajé de rua e bares em volta, sem reserva", "Acarajé callejero y bares alrededor, sin reserva", "", "", ["br", "dinheiro"]);
-X("cira", "Rio Vermelho (Largo da Mariquita)", "Rio Vermelho (Largo da Mariquita)", "Acarajé de rua no Largo da Mariquita", "Acarajé callejero en el Largo da Mariquita", "", "", ["br", "dinheiro"]);
-X("tereza", "Rio Vermelho", "Rio Vermelho", "Cozinha baiana da chef Tereza Paim", "Cocina bahiana de la chef Tereza Paim", "", "", ["reserva"]);
-X("mariquita", "Rio Vermelho", "Rio Vermelho", "Cozinha patrimonial baiana, só almoço", "Cocina patrimonial bahiana, solo almuerzo");
-X("amado", "Comércio", "Comércio", "Cozinha costeira à beira da baía", "Cocina costera a orillas de la bahía");
-X("senac", "Largo do Pelourinho", "Largo do Pelourinho", "Buffet com cerca de 40 pratos baianos", "Bufé con unos 40 platos bahianos");
-X("poro", "Santo Antônio Além do Carmo", "Santo Antônio Além do Carmo", "Restaurante com vista da baía", "Restaurante con vista a la bahía");
-X("ori", "Rua Chile", "Rua Chile", "Terraço com vista; bom no pôr do sol", "Terraza con vista; buena al atardecer", "", "", ["reserva"]);
-X("peixevoador", "Rua Chile", "Rua Chile", "Terraço da chef Preta, 30 lugares", "Terraza de la chef Preta, 30 lugares", "", "", ["reserva"]);
-X("pala7", "Rua Chile", "Rua Chile", "Italiano de Claude Troisgros no terraço", "Italiano de Claude Troisgros en la terraza", "", "", ["reserva"]);
+X("poro", "Santo Antônio Além do Carmo", "Santo Antônio Além do Carmo", "Vista da baía; tem carnes", "Vista a la bahía; tiene carnes", "", "", ["confirmar"]);
+X("pala7", "Rua Chile", "Rua Chile", "Grelhados de Claude Troisgros no terraço", "Parrilla de Claude Troisgros en la terraza", "", "", ["reserva", "confirmar"]);
 X("arento", "Rua Chile (Fera Palace)", "Rua Chile (Fera Palace)", "Mediterrâneo no lobby histórico do hotel", "Mediterráneo en el lobby histórico del hotel", "~R$200 por pessoa", "~R$200 por persona");
 X("mistura", "Av. Contorno", "Av. Contorno", "Vista de 360 graus da baía", "Vista de 360 grados de la bahía");
-X("boia", "Horto Florestal", "Horto Florestal", "Frutos do mar, 10º no ranking Exame", "Mariscos, puesto 10 en el ranking Exame", "~R$98 o prato", "~R$98 el plato");
-X("boteco", "Rio Vermelho", "Rio Vermelho", "Boteco de frutos do mar, arroz de polvo", "Bar de mariscos, arroz con pulpo", "", "", ["br"]);
-X("origem", "Caminho das Árvores", "Caminho das Árvores", "Degustação, 4º no ranking Exame", "Degustación, puesto 4 en el ranking Exame", "R$420 por pessoa", "R$420 por persona", ["reserva"]);
-X("manga", "Rio Vermelho", "Rio Vermelho", "Degustação de 9 etapas", "Degustación de 9 pasos", "~R$395 por pessoa", "~R$395 por persona", ["reserva"]);
 X("jantar", "Perto do hotel", "Cerca del hotel", "Jantar sem reserva", "Cena sin reserva");
 X("praiadoforte", "Litoral norte, 1h30", "Litoral norte, 1h30", "Tartarugas marinhas e piscinas naturais", "Tortugas marinas y piscinas naturales", "R$120 + TAMAR R$54", "R$120 + TAMAR R$54", ["reserva"]);
 X("escuna", "Baía de Todos os Santos", "Bahía de Todos los Santos", "Ilha dos Frades e Itaparica, música a bordo", "Isla de los Frades e Itaparica, música a bordo", "R$100 a 162 + taxas", "R$100 a 162 + tasas", ["reserva"]);
@@ -929,15 +897,21 @@ X("oliva", "Shopping Barra", "Shopping Barra", "Pizza e massa à vontade, todo d
 X("boipreto", "Boca do Rio (orla)", "Boca do Rio (costanera)", "Carnes no espeto à vontade", "Carnes en espada a voluntad", "~R$209 por pessoa", "~R$209 por persona", ["br", "reserva"]);
 X("orientefast", "Rio Vermelho", "Rio Vermelho", "Sushi à vontade, pedido no tablet", "Sushi a voluntad, pedido en tablet", "R$120 a 160", "R$120 a 160", ["br", "confirmar"]);
 X("mignon", "Graça", "Graça", "Bufê pago pelo peso do prato", "Bufé que se paga por peso", "~R$200 o quilo", "~R$200 el kilo", ["br"]);
-X("casaria", "Rua Chile", "Rua Chile", "Bufê de café da manhã baiano", "Bufé de desayuno bahiano", "R$130 por pessoa", "R$130 por persona", ["br"]);
 X("perini", "Graça", "Graça", "Padaria brasileira tradicional", "Panadería brasileña tradicional", "", "", ["br"]);
 X("acai", "Barra e Rio Vermelho", "Barra y Rio Vermelho", "Açaí de colher com granola", "Açaí de cuchara con granola", "", "", ["br", "confirmar"]);
 X("cubana", "Elevador Lacerda", "Elevador Lacerda", "Sorvete de frutas brasileiras desde 1930", "Helado de frutas brasileñas desde 1930", "", "", ["br"]);
-X("yemanja", "Jardim Armação (orla)", "Jardim Armação (costanera)", "Moqueca clássica na panela de barro", "Moqueca clásica en olla de barro", "~R$85 por pessoa", "~R$85 por persona", ["confirmar"]);
-X("donana", "Rio Vermelho", "Rio Vermelho", "Moqueca farta para dividir", "Moqueca abundante para compartir");
-X("culinaria", "Stella Maris", "Stella Maris", "Moqueca feita por vocês, com caipirinha", "Moqueca hecha por ustedes, con caipiriña", "US$65 por pessoa", "US$65 por persona", ["reserva"]);
 X("restweek", "Vários bairros", "Varios barrios", "Menu de 3 pratos com preço fixo", "Menú de 3 tiempos a precio fijo", "R$59,90 a 119", "R$59,90 a 119", ["reserva"]);
 X("morro", "Ilha de Tinharé, 2h20 de catamarã", "Isla de Tinharé, 2h20 en catamarán", "Vila sem carros e praias, ida e volta no dia", "Pueblo sin carros y playas, ida y vuelta en el día", "~R$400 por pessoa", "~R$400 por persona", ["reserva", "cedo"]);
+X("mammajamma", "Shopping Barra", "Shopping Barra", "Pizza e massa italianas", "Pizza y pasta italianas", "~R$75 o prato", "~R$75 el plato");
+X("pereira", "Porto da Barra", "Porto da Barra", "Vista do mar, carnes e hambúrgueres", "Vista al mar, carnes y hamburguesas", "", "", ["confirmar"]);
+X("carvao", "Chame-Chame (Barra)", "Chame-Chame (Barra)", "Carnes na brasa", "Carnes a la brasa", "R$99 a 119 (Restaurant Week)", "R$99 a 119 (Restaurant Week)", ["reserva"]);
+X("pastaemcasa", "Rio Vermelho", "Rio Vermelho", "Cantina italiana", "Cantina italiana", "R$65 a 139 o prato", "R$65 a 139 el plato", ["reserva"]);
+X("chalabi", "Rio Vermelho", "Rio Vermelho", "Libanesa: kafta, pide, frango ao iogurte", "Libanesa: kafta, pide, pollo al yogur", "R$73,90 a 94,90 (Restaurant Week)", "R$73,90 a 94,90 (Restaurant Week)");
+X("pasargada", "Rio Vermelho", "Rio Vermelho", "Kebab persa e falafel, casual", "Kebab persa y falafel, casual", "R$70 a 80 o combo", "R$70 a 80 el combo");
+X("alfredoro", "Ondina", "Ondina", "Italiano tradicional, reaberto em 2026", "Italiano tradicional, reabierto en 2026", "", "", ["confirmar"]);
+X("gero", "Praça Castro Alves", "Praça Castro Alves", "Italiano do Hotel Fasano", "Italiano del Hotel Fasano", "R$145 a 190 por pessoa", "R$145 a 190 por persona", ["reserva"]);
+X("loro", "Stella Maris", "Stella Maris", "Barraca na areia, com carnes e massas", "Kiosco en la arena, con carnes y pastas", "", "");
+X("almacen", "Shopping Barra", "Shopping Barra", "Empório com pizza, choripán e picanha", "Almacén con pizza, choripán y picanha", "Pizza R$55 a 60", "Pizza R$55 a 60");
 ACTS.forEach((a) => Object.assign(a, EXTRA[a.id] || { brief: null, area: null, p: null, tags: [] }));
 
 </script>
@@ -952,7 +926,7 @@ const T = {
     beforeArrival: "Ainda viajando", afterAirport: "Aeroporto e voo",
     hint: "Toque num bloco para ver detalhes e links. Segure meio segundo e arraste para mudar o horário, ou solte sobre outro dia lá em cima. Puxe a borda de baixo para mudar a duração.",
     hours: "Horário", cost: "Custo", where: "Onde", info: "Ver informações", map: "Mapa", photos: "Fotos",
-    linkNames: { info: "Ver informações", reserva: "Reservar", instagram: "Instagram", baleias: "Baleias", forte: "Forte", sorveteria: "Sorveteria", "horários": "Horários", ranking: "Ranking", tour: "Tour", TAMAR: "TAMAR", piscinas: "Piscinas", "como chegar": "Como chegar", lojas: "Lojas", ingressos: "Ingressos", cadastro: "Cadastro facial", agenda: "Agenda", taxa: "Taxa da ilha", lista: "Lista de restaurantes", "avaliações": "Avaliações", "preços": "Preços" },
+    linkNames: { info: "Ver informações", reserva: "Reservar", instagram: "Instagram", baleias: "Baleias", forte: "Forte", sorveteria: "Sorveteria", "horários": "Horários", ranking: "Ranking", tour: "Tour", TAMAR: "TAMAR", piscinas: "Piscinas", "como chegar": "Como chegar", lojas: "Lojas", ingressos: "Ingressos", cadastro: "Cadastro facial", agenda: "Agenda", taxa: "Taxa da ilha", lista: "Lista de restaurantes", "avaliações": "Avaliações", "preços": "Preços", "cardápio": "Cardápio" },
     dayL: "Dia", startL: "Início", durL: "Duração", noteL: "Anotação", nameL: "Nome do bloco",
     remove: "Remover", close: "Fechar", add: "Adicionar ao cronograma", fixedBlock: "Bloco fixo da viagem.",
     conflictWith: "Conflito de horário com", conflict: "conflito", noStart: "Não há horário possível neste dia.",
@@ -972,7 +946,7 @@ const T = {
     tagNames: { reserva: "Reservar", dinheiro: "Levar dinheiro", confirmar: "Confirmar horário", uber: "Ir de Uber", roupa: "Roupa clara", cedo: "Chegar cedo", conta: "Conferir a conta", br: "Típico do Brasil", ingresso: "Comprar ingresso" },
     outOfHours: "fora do horário", outAlert: "Fora do horário possível",
     pinnedHint: "O início é fixo (pouso às 15h25). Se o voo atrasar ou for internacional, aumente a duração aqui.",
-    updMsg: (v) => (v >= 3 ? "O roteiro sugerido foi atualizado: saíram o MUNCAB do domingo e o terreiro da sexta; entraram cachaça no Cravinho no domingo, rodízio de pizza na quinta (no lugar do Fasano) e praia na sexta de manhã." : v >= 2 ? "O roteiro sugerido foi atualizado: saíram os museus, o terreiro e o Balé; o jantar de segunda passou para 19h30; entraram cachaça no Cravinho no domingo e rodízio de pizza na quinta." : "O roteiro sugerido foi atualizado: pouso às 15h25, um jantar só no sábado, Farol no domingo de manhã, jantar na segunda, sem museus, sem o terreiro e sem o Balé, e rodízio de pizza na quinta.") + " Usar a versão nova? As mudanças feitas neste celular serão substituídas.",
+    updMsg: (v) => "O roteiro sugerido foi refeito com o que ela marcou: sem comida baiana nem frutos do mar, sem Feira de São Joaquim, Bonfim e Boteco do França, com um horário para a Helena quase todo dia, o jogo do Bahia no domingo e surfe em Stella Maris na sexta. Usar a versão nova? As mudanças feitas neste celular serão substituídas.",
     updNew: "Usar a versão nova", updKeep: "Manter a minha", updDone: "Roteiro novo carregado.", errAirport: "Na sexta é preciso sair para o aeroporto às 21h30.",
     errDay: (n, d) => `${n}: não disponível neste dia. Dias possíveis: ${d}.`, errTime: (n, w) => `${n}: horário possível ${w}.`, errFixed: (n, t) => `${n} começa às ${t}.`, errNone: (n) => `${n} não cabe em nenhum dia da viagem.`,
     to: "a", noDays: "nenhum",
@@ -986,7 +960,7 @@ const T = {
     beforeArrival: "Todavía viajando", afterAirport: "Aeropuerto y vuelo",
     hint: "Toca un bloque para ver detalles y enlaces. Mantén presionado medio segundo y arrastra para cambiar la hora, o suéltalo sobre otro día arriba. Jala el borde de abajo para cambiar la duración.",
     hours: "Horario", cost: "Costo", where: "Dónde", info: "Ver información", map: "Mapa", photos: "Fotos",
-    linkNames: { info: "Ver información", reserva: "Reservar", instagram: "Instagram", baleias: "Ballenas", forte: "Fuerte", sorveteria: "Heladería", "horários": "Horarios", ranking: "Ranking", tour: "Tour", TAMAR: "TAMAR", piscinas: "Piscinas", "como chegar": "Cómo llegar", lojas: "Tiendas", ingressos: "Entradas", cadastro: "Registro facial", agenda: "Agenda", taxa: "Tasa de la isla", lista: "Lista de restaurantes", "avaliações": "Reseñas", "preços": "Precios" },
+    linkNames: { info: "Ver información", reserva: "Reservar", instagram: "Instagram", baleias: "Ballenas", forte: "Fuerte", sorveteria: "Heladería", "horários": "Horarios", ranking: "Ranking", tour: "Tour", TAMAR: "TAMAR", piscinas: "Piscinas", "como chegar": "Cómo llegar", lojas: "Tiendas", ingressos: "Entradas", cadastro: "Registro facial", agenda: "Agenda", taxa: "Tasa de la isla", lista: "Lista de restaurantes", "avaliações": "Reseñas", "preços": "Precios", "cardápio": "Menú" },
     dayL: "Día", startL: "Inicio", durL: "Duración", noteL: "Nota", nameL: "Nombre del bloque",
     remove: "Quitar", close: "Cerrar", add: "Agregar al cronograma", fixedBlock: "Bloque fijo del viaje.",
     conflictWith: "Choque de horario con", conflict: "choque", noStart: "No hay horario posible este día.",
@@ -1006,7 +980,7 @@ const T = {
     tagNames: { reserva: "Reservar", dinheiro: "Llevar efectivo", confirmar: "Confirmar horario", uber: "Ir en Uber", roupa: "Ropa clara", cedo: "Llegar temprano", conta: "Revisar la cuenta", br: "Típico de Brasil", ingresso: "Comprar entrada" },
     outOfHours: "fuera de horario", outAlert: "Fuera del horario posible",
     pinnedHint: "El inicio es fijo (aterrizaje a las 15:25). Si el vuelo se retrasa o es internacional, aumenta la duración aquí.",
-    updMsg: (v) => (v >= 3 ? "El itinerario sugerido se actualizó: salieron el MUNCAB del domingo y el terreiro del viernes; entraron cachaza en O Cravinho el domingo, rodizio de pizza el jueves (en lugar del Fasano) y playa el viernes en la mañana." : v >= 2 ? "El itinerario sugerido se actualizó: salieron los museos, el terreiro y el Ballet; la cena del lunes pasó a las 19:30; entraron cachaza en O Cravinho el domingo y rodizio de pizza el jueves." : "El itinerario sugerido se actualizó: aterrizaje a las 15:25, una sola cena el sábado, el Faro el domingo en la mañana, cena el lunes, sin museos, sin el terreiro y sin el Ballet, y rodizio de pizza el jueves.") + " ¿Usar la versión nueva? Se reemplazarán los cambios hechos en este celular.",
+    updMsg: (v) => "El itinerario sugerido se rehízo con lo que ella marcó: sin comida bahiana ni mariscos, sin la Feria de São Joaquim, el Bonfim ni el Boteco do França, con un espacio para Helena casi todos los días, el partido del Bahia el domingo y surf en Stella Maris el viernes. ¿Usar la versión nueva? Se reemplazarán los cambios hechos en este celular.",
     updNew: "Usar la versión nueva", updKeep: "Mantener la mía", updDone: "Itinerario nuevo cargado.", errAirport: "El viernes hay que salir al aeropuerto a las 21:30.",
     errDay: (n, d) => `${n}: no disponible este día. Días posibles: ${d}.`, errTime: (n, w) => `${n}: horario posible ${w}.`, errFixed: (n, t) => `${n} empieza a las ${t}.`, errNone: (n) => `${n} no cabe en ningún día del viaje.`,
     to: "a", noDays: "ninguno",
@@ -1047,7 +1021,7 @@ function normalize(p) {
   return out;
 }
 function sig(list) { return list.map((b) => `${b.a}|${b.d}|${b.s}|${b.u}`).sort().join(";"); }
-const OLD_SIGS = [DEFAULT_PLAN_V1, DEFAULT_PLAN_V2, DEFAULT_PLAN_V3].map((l) => sig(l.map(([a, d, s, u]) => ({ a, d, s: h(s), u }))));
+const OLD_SIGS = [DEFAULT_PLAN_V1, DEFAULT_PLAN_V2, DEFAULT_PLAN_V3, DEFAULT_PLAN_V4].map((l) => sig(l.map(([a, d, s, u]) => ({ a, d, s: h(s), u }))));
 let pendingUpdate = false, pendingFrom = 0;
 function loadPlan() {
   const raw = store.get(LS_PLAN), ver = +(store.get(LS_VER) || 0);
