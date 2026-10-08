@@ -1,13 +1,12 @@
 <!doctype html>
-<html lang="es" data-theme="light">
-<head>
+<html lang="es" data-theme="light"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0D3B4C">
 <title>Salvador 10 a 16 de outubro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600;700&family=Pixelify+Sans:wght@700&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&amp;family=Figtree:wght@400;500;600;700&amp;family=Pixelify+Sans:wght@700&amp;display=swap">
 <style>
 /* Layout: cabeçalho fixo, faixa de dias, linha do tempo vertical com rolagem própria, barra de ações embaixo. */
 :root {
@@ -232,17 +231,17 @@ textarea { width: 100%; min-height: 70px; }
     <div class="dayinfo" id="dayinfo"></div>
     <div class="scroller" id="scroller">
       <div id="dayView"><div class="tlwrap"><div class="tl" id="tl"></div></div><p class="now-hint" id="hint"></p></div>
-      <div id="weekView" hidden></div>
+      <div id="weekView" hidden=""></div>
     </div>
   </main>
   <div class="bottom">
     <button class="bbtn helena" id="addHelena"></button>
     <button class="bbtn primary" id="addAct"></button>
-    <button class="bbtn" id="undoBtn" disabled></button>
+    <button class="bbtn" id="undoBtn" disabled=""></button>
   </div>
 </div>
-<div class="scrim" id="scrim" hidden></div>
-<section class="sheet" id="sheet" role="dialog" aria-modal="true" hidden><div class="grab"></div><div class="body" id="sheetBody"></div></section>
+<div class="scrim" id="scrim" hidden=""></div>
+<section class="sheet" id="sheet" role="dialog" aria-modal="true" hidden=""><div class="grab"></div><div class="body" id="sheetBody"></div></section>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -896,6 +895,10 @@ const DEFAULT_PLAN = [
   ["helena", SEX, "09:00", 90], ["surf", SEX, "11:30", 90], ["loro", SEX, "13:00", 75], ["stella", SEX, "14:15", 120], ["pereira", SEX, "19:00", 90], ["aeroporto", SEX, "21:30", 70],
 ];
 
+// Plano salvo pelo menu "Salvar index.html": o arquivo baixado traz aqui o plano do celular que o gerou.
+// null = usar o roteiro padrão acima.
+const CUSTOM_PLAN = /*CUSTOM_PLAN_START*/{"id":"6.muzl9ml1","when":"2026-10-08T13:45:17.461Z","plan":[["chegada",0,925,125,"",""],["helena",0,1140,90,"",""],["buddha",0,1230,75,"",""],["helena",1,540,90,"",""],["farol",1,675,60,"",""],["carvao",1,750,75,"",""],["ribeira",1,870,150,"",""],["humaita",1,1020,45,"",""],["futebol",1,1110,210,"",""],["helena",2,540,90,"",""],["mercado",2,675,75,"",""],["pelourinho",2,750,60,"",""],["cuco",2,810,75,"",""],["santoantonio",2,900,165,"",""],["bravo",2,1170,75,"",""],["mergulho",3,510,120,"",""],["portobarra",3,645,105,"",""],["mignon",3,765,75,"",""],["solar",3,960,105,"",""],["helena",3,1110,90,"",""],["tijuana",3,1230,75,"",""],["praiadoforte",4,420,480,"",""],["vishnu",4,1170,90,"",""],["escuna",5,540,390,"",""],["volpi",5,1170,90,"",""],["helena",6,540,90,"",""],["surf",6,690,90,"",""],["loro",6,780,75,"",""],["stella",6,855,120,"",""],["pereira",6,1140,90,"",""],["aeroporto",6,1290,70,"",""],["outro",0,1080,60,"Shopping","Salvador Shopping"]],"prev":["aeroporto|6|1290|70;bravo|2|1170|75;buddha|0|1215|75;carvao|1|750|75;chegada|0|925|125;cuco|2|810|75;escuna|5|540|390;farol|1|675|60;futebol|1|1110|210;helena|0|1095|90;helena|1|540|90;helena|2|540|90;helena|3|1110|90;helena|6|540|90;humaita|1|1020|45;loro|6|780|75;mercado|2|675|75;mergulho|3|510|120;mignon|3|765|75;pelourinho|2|750|60;pereira|6|1140|90;portobarra|3|645|105;praiadoforte|4|420|480;ribeira|1|870|150;santoantonio|2|900|165;solar|3|960|105;stella|6|855|120;surf|6|690|90;tijuana|3|1230|75;vishnu|4|1170|90;volpi|5|1170|90"]}/*CUSTOM_PLAN_END*/;
+
 // Roteiro padrão da versão 5 (usado só para reconhecer celulares que não mudaram nada)
 const DEFAULT_PLAN_V5 = [
   ["chegada", SAB, "15:25", 125], ["helena", SAB, "18:00", 120], ["mammajamma", SAB, "20:15", 75],
@@ -1056,6 +1059,8 @@ ACTS.forEach((a) => Object.assign(a, EXTRA[a.id] || { brief: null, area: null, p
 </script>
 <script>
 "use strict";
+// Cópia da página como veio do servidor, para gerar o index.html com o plano do celular.
+const PAGE_SRC = "<!doctype html>\n" + document.documentElement.outerHTML;
 // ===== Textos da interface =====
 const T = {
   pt: {
@@ -1086,7 +1091,7 @@ const T = {
     outOfHours: "fora do horário", outAlert: "Fora do horário possível",
     pinnedHint: "O início é fixo (pouso às 15h25). Se o voo atrasar ou for internacional, aumente a duração aqui.",
     updMsg: (v) => (v >= 5 ? "O roteiro sugerido foi ajustado: Helena com 1h30, horários pensando na hospedagem no Porto da Barra e na Costa Azul, e restaurantes de cozinhas variadas (asiático, mexicano, indiano, hambúrguer, carnes), com só um italiano." : "O roteiro sugerido foi refeito com o que ela marcou: sem comida baiana nem frutos do mar, sem Feira de São Joaquim, Bonfim e Boteco do França, com 1h30 para a Helena quase todo dia, o jogo do Bahia no domingo, surfe em Stella Maris na sexta e restaurantes variados, com só um italiano.") + " Usar a versão nova? As mudanças feitas neste celular serão substituídas.",
-    updNew: "Usar a versão nova", updKeep: "Manter a minha", updDone: "Roteiro novo carregado.", errAirport: "Na sexta é preciso sair para o aeroporto às 21h30.",
+    updCustom: (w) => `O roteiro sugerido foi atualizado em ${w}. Usar a versão nova? As mudanças feitas neste celular serão substituídas.`, saveIdx: "Salvar index.html com este plano", saveIdxSub: "Baixa o arquivo do site com o plano deste celular como roteiro sugerido. Depois é só subir no GitHub no lugar do index.html antigo.", savedIdx: "Pronto. Se o navegador perguntar, escolha baixar. Depois suba o arquivo no repositório com o nome index.html, no lugar do antigo (se ele salvar como index (1).html, renomeie antes). Celulares sem mudanças recebem o plano novo sozinhos; os que têm mudanças veem um aviso para escolher.", saveFail: "Não consegui gerar o arquivo neste navegador.", at: "às", updNew: "Usar a versão nova", updKeep: "Manter a minha", updDone: "Roteiro novo carregado.", errAirport: "Na sexta é preciso sair para o aeroporto às 21h30.",
     errDay: (n, d) => `${n}: não disponível neste dia. Dias possíveis: ${d}.`, errTime: (n, w) => `${n}: horário possível ${w}.`, errFixed: (n, t) => `${n} começa às ${t}.`, errNone: (n) => `${n} não cabe em nenhum dia da viagem.`,
     to: "a", noDays: "nenhum",
     help: ["Cada bloco tem a altura do tempo que a atividade leva.", "Toque num bloco para ver o que é, horário, preço e links com mapa e fotos.", "Para mudar o horário: segure o bloco meio segundo e arraste. Para mudar de dia: arraste até o dia na faixa de cima, ou toque no bloco e escolha o dia.", "Puxe a borda de baixo do bloco para aumentar ou diminuir a duração.", "Enquanto arrasta, a faixa verde mostra quando a atividade é possível. Se soltar fora dela, o bloco volta e aparece o motivo.", "Use + Helena para marcar as visitas, e + Atividade para incluir opções do catálogo.", "As mudanças ficam salvas neste celular. Para mandar sua versão, use Menu e Compartilhar meu plano."],
@@ -1120,7 +1125,7 @@ const T = {
     outOfHours: "fuera de horario", outAlert: "Fuera del horario posible",
     pinnedHint: "El inicio es fijo (aterrizaje a las 15:25). Si el vuelo se retrasa o es internacional, aumenta la duración aquí.",
     updMsg: (v) => (v >= 5 ? "El itinerario sugerido se ajustó: Helena con 1h30, horarios pensados según el alojamiento en Porto da Barra y Costa Azul, y restaurantes de cocinas variadas (asiática, mexicana, india, hamburguesas, carnes), con un solo italiano." : "El itinerario sugerido se rehízo con lo que ella marcó: sin comida bahiana ni mariscos, sin la Feria de São Joaquim, el Bonfim ni el Boteco do França, con 1h30 para Helena casi todos los días, el partido del Bahia el domingo, surf en Stella Maris el viernes y restaurantes variados, con un solo italiano.") + " ¿Usar la versión nueva? Se reemplazarán los cambios hechos en este celular.",
-    updNew: "Usar la versión nueva", updKeep: "Mantener la mía", updDone: "Itinerario nuevo cargado.", errAirport: "El viernes hay que salir al aeropuerto a las 21:30.",
+    updCustom: (w) => `El itinerario sugerido se actualizó el ${w}. ¿Usar la versión nueva? Se reemplazarán los cambios hechos en este celular.`, saveIdx: "Guardar index.html con este plan", saveIdxSub: "Descarga el archivo del sitio con el plan de este celular como itinerario sugerido. Después solo hay que subirlo a GitHub en lugar del index.html anterior.", savedIdx: "Listo. Si el navegador pregunta, elige descargar. Después sube el archivo al repositorio con el nombre index.html, en lugar del anterior (si lo guarda como index (1).html, cámbiale el nombre antes). Los celulares sin cambios reciben el plan nuevo solos; los que tienen cambios ven un aviso para elegir.", saveFail: "No pude generar el archivo en este navegador.", at: "a las", updNew: "Usar la versión nueva", updKeep: "Mantener la mía", updDone: "Itinerario nuevo cargado.", errAirport: "El viernes hay que salir al aeropuerto a las 21:30.",
     errDay: (n, d) => `${n}: no disponible este día. Días posibles: ${d}.`, errTime: (n, w) => `${n}: horario posible ${w}.`, errFixed: (n, t) => `${n} empieza a las ${t}.`, errNone: (n) => `${n} no cabe en ningún día del viaje.`,
     to: "a", noDays: "ninguno",
     help: ["Cada bloque tiene la altura del tiempo que toma la actividad.", "Toca un bloque para ver qué es, horario, precio y enlaces con mapa y fotos.", "Para cambiar la hora: mantén presionado el bloque medio segundo y arrastra. Para cambiar de día: arrástralo hasta el día en la barra de arriba, o toca el bloque y elige el día.", "Jala el borde de abajo del bloque para alargar o acortar la duración.", "Mientras arrastras, la franja verde muestra cuándo se puede hacer la actividad. Si lo sueltas fuera, el bloque vuelve y aparece el motivo.", "Usa + Helena para marcar las visitas, y + Actividad para sumar opciones del catálogo.", "Los cambios quedan guardados en este celular. Para mandar tu versión, usa Menú y Compartir mi plan."],
@@ -1144,7 +1149,12 @@ const L = () => T[lang];
 const tx = (o) => (o ? (o[lang] || o.pt || "") : "");
 
 function newUid() { return "b" + (uidSeq++) + Math.random().toString(36).slice(2, 6); }
-function defaultPlan() { return DEFAULT_PLAN.map(([a, d, s, u]) => ({ uid: newUid(), a, d, s: h(s), u })); }
+// Identificador do roteiro sugerido deste arquivo: número da versão, ou o plano salvo pelo menu.
+const PLAN_ID = CUSTOM_PLAN && Array.isArray(CUSTOM_PLAN.plan) ? String(CUSTOM_PLAN.id) : String(PLAN_VER);
+function defaultPlan() {
+  if (CUSTOM_PLAN && Array.isArray(CUSTOM_PLAN.plan)) return normalize(CUSTOM_PLAN.plan.map(([a, d, s, u, t, n]) => { const b = { uid: newUid(), a, d, s, u }; if (t) b.t = t; if (n) b.n = n; return b; }));
+  return DEFAULT_PLAN.map(([a, d, s, u]) => ({ uid: newUid(), a, d, s: h(s), u }));
+}
 // Fim do bloco de chegada: antes disso nada pode começar no sábado.
 function arriveOk() { const c = plan.find((b) => b.a === "chegada"); return c ? c.s + c.u : h("17:30"); }
 // Garante uma chegada (15h25) e uma saída para o aeroporto (21h30), também em planos antigos ou recebidos por link.
@@ -1161,22 +1171,29 @@ function normalize(p) {
 }
 function sig(list) { return list.map((b) => `${b.a}|${b.d}|${b.s}|${b.u}`).sort().join(";"); }
 const OLD_SIGS = [DEFAULT_PLAN_V1, DEFAULT_PLAN_V2, DEFAULT_PLAN_V3, DEFAULT_PLAN_V4, DEFAULT_PLAN_V5].map((l) => sig(l.map(([a, d, s, u]) => ({ a, d, s: h(s), u }))));
+// Roteiros sugeridos anteriores: quem não mexeu neles recebe o novo sem aviso.
+const KNOWN_SIGS = OLD_SIGS.concat(CUSTOM_PLAN ? [sig(DEFAULT_PLAN.map(([a, d, s, u]) => ({ a, d, s: h(s), u })))].concat(CUSTOM_PLAN.prev || []) : []);
 let pendingUpdate = false, pendingFrom = 0;
 function loadPlan() {
-  const raw = store.get(LS_PLAN), ver = +(store.get(LS_VER) || 0);
+  const raw = store.get(LS_PLAN), sid = store.get(LS_VER) || "0";
   if (raw) {
     try {
       const p = JSON.parse(raw);
       if (Array.isArray(p) && p.length) {
-        if (ver < PLAN_VER) {
-          if (OLD_SIGS.includes(sig(p))) { plan = defaultPlan(); store.set(LS_VER, String(PLAN_VER)); savePlan(); return; }
-          pendingUpdate = true; pendingFrom = ver;
+        if (sid !== PLAN_ID) {
+          const ps = sig(p);
+          // o plano do celular já é igual ao sugerido (por exemplo, no celular que salvou o index.html)
+          if (ps === sig(defaultPlan())) { store.set(LS_VER, PLAN_ID); plan = normalize(p); return; }
+          if (KNOWN_SIGS.includes(ps)) { plan = defaultPlan(); store.set(LS_VER, PLAN_ID); savePlan(); return; }
+          // celular que já viu uma versão numérica mais nova do site: não perguntar
+          if (!CUSTOM_PLAN && /^\d+$/.test(sid) && +sid > PLAN_VER) { plan = normalize(p); return; }
+          pendingUpdate = true; pendingFrom = sid;
         }
         plan = normalize(p); return;
       }
     } catch (e) {}
   }
-  plan = defaultPlan(); store.set(LS_VER, String(PLAN_VER));
+  plan = defaultPlan(); store.set(LS_VER, PLAN_ID);
 }
 function savePlan() { store.set(LS_PLAN, JSON.stringify(plan)); }
 function snapshot() { undoStack.push(JSON.stringify(plan)); if (undoStack.length > 40) undoStack.shift(); document.getElementById("undoBtn").disabled = false; }
@@ -1697,6 +1714,7 @@ function openCatalog() {
   });
 }
 function openMenu() {
+  prefetchSrc();
   openSheet((body) => {
     body.append(el("h2", null, L().menuTitle));
     const out = el("div"); const m = el("div", { class: "menu" });
@@ -1710,13 +1728,14 @@ function openMenu() {
       out.append(ta, el("div", { class: "actions" }, el("button", { class: "go", onclick: () => { const p = decodePlan(ta.value); if (!p) { toast(L().importBad, true); return; } snapshot(); plan = p; savePlan(); closeSheet(); render(); toast(L().loaded); } }, L().importGo)));
       ta.focus();
     });
+    item(L().saveIdx, L().saveIdxSub, () => saveIndex(out));
     item(L().howto, "", () => { out.textContent = ""; const ul = el("ul", { class: "help" }); L().help.forEach((x) => ul.append(el("li", null, x))); out.append(ul); });
     const th = store.get(LS_THEME) || "light";
     item(`${L().theme}: ${th === "dark" ? L().themeDark : th === "light" ? L().themeLight : L().themeAuto}`, "", () => { const nx = th === "auto" ? "light" : th === "light" ? "dark" : "auto"; store.set(LS_THEME, nx); applyTheme(); openMenu(); });
     let armed = false;
     const rb = el("button", { class: "danger", onclick: () => {
       if (!armed) { armed = true; rb.firstChild.textContent = L().resetConfirm; setTimeout(() => { armed = false; rb.firstChild.textContent = L().reset; }, 4000); return; }
-      snapshot(); plan = defaultPlan(); store.set(LS_VER, String(PLAN_VER)); savePlan(); closeSheet(); render(); toast(L().resetDone, false, true);
+      snapshot(); plan = defaultPlan(); store.set(LS_VER, PLAN_ID); savePlan(); closeSheet(); render(); toast(L().resetDone, false, true);
     } }, L().reset, el("small", null, L().resetSub));
     m.append(rb);
     body.append(m, out);
@@ -1766,17 +1785,50 @@ function checkIncoming() {
   const slot = $("bannerSlot"); slot.textContent = "";
   const bn = el("div", { class: "banner" }, el("div", null, el("b", null, L().received(p.length)), " ", L().receivedQ),
     el("div", { class: "row" },
-      el("button", { class: "go", onclick: () => { snapshot(); plan = p; store.set(LS_VER, String(PLAN_VER)); savePlan(); slot.textContent = ""; render(); toast(L().loaded, false, true); } }, L().load),
+      el("button", { class: "go", onclick: () => { snapshot(); plan = p; store.set(LS_VER, PLAN_ID); savePlan(); slot.textContent = ""; render(); toast(L().loaded, false, true); } }, L().load),
       el("button", { onclick: () => { slot.textContent = ""; } }, L().ignore)));
   slot.append(bn);
 }
 
+function fmtStamp(iso) {
+  const d = new Date(iso); if (isNaN(d)) return "";
+  const p2 = (x) => String(x).padStart(2, "0");
+  return `${p2(d.getDate())}/${p2(d.getMonth() + 1)} ${L().at} ${lang === "pt" ? d.getHours() + "h" + p2(d.getMinutes()) : d.getHours() + ":" + p2(d.getMinutes())}`;
+}
+// Código do site como está no servidor, buscado quando o menu abre. Assim o arquivo salvo não leva
+// junto o que extensões do navegador (modo escuro, por exemplo) injetam na página. Sem rede, usa a cópia da página.
+const MARK = /\/\*CUSTOM_PLAN_START\*\/[\s\S]*?\/\*CUSTOM_PLAN_END\*\//;
+let srcFetched = null;
+function prefetchSrc() {
+  if (srcFetched || !/^https?:$/.test(location.protocol) || !window.fetch) return;
+  fetch(location.href.split("#")[0], { cache: "no-cache" }).then((r) => (r.ok ? r.text() : "")).then((t) => { if (MARK.test(t)) srcFetched = t; }).catch(() => {});
+}
+// Baixa uma cópia deste site com o plano do celular como roteiro sugerido.
+function saveIndex(out) {
+  const M = MARK, base = srcFetched || PAGE_SRC;
+  if (!M.test(base)) { toast(L().saveFail, true); return; }
+  const prev = CUSTOM_PLAN && Array.isArray(CUSTOM_PLAN.prev) ? CUSTOM_PLAN.prev.slice() : [];
+  const cur = sig(defaultPlan()); if (!prev.includes(cur)) prev.push(cur);
+  const now = new Date();
+  const payload = { id: PLAN_VER + "." + now.getTime().toString(36), when: now.toISOString(), plan: plan.map((b) => [b.a, b.d, b.s, b.u, b.t || "", b.n || ""]), prev: prev.slice(-12) };
+  const json = JSON.stringify(payload).replace(/</g, "\\u003c");
+  const src = base.replace(M, () => "/*CUSTOM_PLAN_START*/" + json + "/*CUSTOM_PLAN_END*/");
+  try {
+    const url = URL.createObjectURL(new Blob([src], { type: "text/html;charset=utf-8" }));
+    const a = el("a", { href: url, download: "index.html" }); a.style.display = "none";
+    document.body.append(a); a.click();
+    setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 5000);
+  } catch (e) { toast(L().saveFail, true); return; }
+  out.textContent = ""; out.append(el("p", { class: "hint" }, L().savedIdx));
+}
+
 function showUpdate() {
   const slot = $("bannerSlot"); slot.textContent = "";
-  slot.append(el("div", { class: "banner" }, el("div", null, L().updMsg(pendingFrom)),
+  const msg = CUSTOM_PLAN ? L().updCustom(fmtStamp(CUSTOM_PLAN.when)) : L().updMsg(/^\d+$/.test(String(pendingFrom)) ? +pendingFrom : 0);
+  slot.append(el("div", { class: "banner" }, el("div", null, msg),
     el("div", { class: "row" },
-      el("button", { class: "go", onclick: () => { snapshot(); plan = defaultPlan(); store.set(LS_VER, String(PLAN_VER)); savePlan(); slot.textContent = ""; render(); toast(L().updDone, false, true); } }, L().updNew),
-      el("button", { onclick: () => { store.set(LS_VER, String(PLAN_VER)); savePlan(); slot.textContent = ""; } }, L().updKeep))));
+      el("button", { class: "go", onclick: () => { snapshot(); plan = defaultPlan(); store.set(LS_VER, PLAN_ID); savePlan(); slot.textContent = ""; render(); toast(L().updDone, false, true); } }, L().updNew),
+      el("button", { onclick: () => { store.set(LS_VER, PLAN_ID); savePlan(); slot.textContent = ""; } }, L().updKeep))));
 }
 function firstVisit() {
   if (store.get("ssa-seen") || $("bannerSlot").childNodes.length) return;
@@ -1943,6 +1995,4 @@ window.addEventListener("resize", () => { if (view === "week") renderWeek(); });
 document.addEventListener("touchmove", (e) => { if (e.touches && e.touches.length > 1) e.preventDefault(); }, { passive: false });
 applyTheme(); loadPlan(); render(); checkIncoming(); if (pendingUpdate && !$("bannerSlot").childNodes.length) showUpdate(); firstVisit(); scrollToMin(curDay === 0 ? 14 * 60 + 30 : 8 * 60);
 window.__ssa = { check, validStarts, BYID, get plan() { return plan; }, encodePlan, decodePlan, DEFAULT_PLAN, arriveOk, availText, normalize, blockErr };
-</script>
-</body>
-</html>
+</script></body></html>
